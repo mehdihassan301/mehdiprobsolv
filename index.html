@@ -31,7 +31,36 @@
     body{opacity:0;background:linear-gradient(180deg,#0f1724 0%,#0b1220 100%);color:rgba(241,245,249,0.95);} 
     .glass{background:rgba(255,255,255,0.03);backdrop-filter:blur(6px);}
     .btn-accent{background:linear-gradient(90deg,#0ea5a4,#7c3aed);}
-    <a class="btn-accent text-white font-medium rounded-md px-6 py-3 transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-lg hover:shadow-purple-500/50">Hire Me</a>
+   /* Button hover/scale/glow */
+.btn-accent {
+  background: linear-gradient(90deg,#0ea5a4,#7c3aed);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.btn-accent:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(124,58,237,0.5);
+}
+
+/* Card hover effect */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-hover:hover {
+  transform: scale(1.03);
+  box-shadow: 0 15px 25px rgba(124,58,237,0.4);
+}
+
+/* Fade-in on scroll */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+.fade-in-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
   </style>
 </head>
@@ -157,17 +186,17 @@
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 stagger-up">
         <!-- Project Card 1 -->
-        <article class="rounded-xl overflow-hidden border hover:shadow-lg transition-shadow bg-white/3">
-          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="project 1" class="w-full h-48 object-cover" />
-          <div class="p-4">
-            <h4 class="font-semibold">E-commerce Refresh</h4>
-            <p class="text-sm text-slate-300 mt-1">Design + Development — improved conversion rate.</p>
-            <div class="mt-3 flex items-center justify-between">
-              <a href="portfolio.html" class="text-sm text-primary">Case study</a>
-              <span class="text-xs text-slate-400">React, Tailwind</span>
-            </div>
-          </div>
-        </article>
+      <article class="rounded-xl overflow-hidden border bg-white/3 card-hover">
+  <img src="..." alt="project 1" class="w-full h-48 object-cover" />
+  <div class="p-4">
+    <h4 class="font-semibold">E-commerce Refresh</h4>
+    <p class="text-sm text-slate-300 mt-1">Design + Development — improved conversion rate.</p>
+    <div class="mt-3 flex items-center justify-between">
+      <a href="portfolio.html" class="text-sm text-primary">Case study</a>
+      <span class="text-xs text-slate-400">React, Tailwind</span>
+    </div>
+  </div>
+</article>
 
         <!-- Project Card 2 -->
         <article class="rounded-xl overflow-hidden border hover:shadow-lg transition-shadow bg-white/3">
