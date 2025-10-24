@@ -3,196 +3,191 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mehdi Hassan — Web Developer & Designer</title>
+  <title>Mehdi Hassan — Web Developer</title>
   <meta name="description" content="Mehdi Hassan — Web developer helping startups & local businesses scale with high-converting websites, clean UI, and SEO." />
-  <meta name="author" content="Mehdi Hassan" />
+  <meta name="theme-color" content="#0ea5a4" />
   <link rel="icon" href="/favicon.ico" />
 
-  <!-- Tailwind Play CDN for quick dev (replace with a build pipeline for production) -->
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- GSAP CDN (core + ScrollTrigger) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
   <script>
-    // Tailwind config (custom colors + container)
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            primary: '#0ea5a4', // teal-500-ish
-            accent: '#7c3aed'   // violet
+            primary: '#0ea5a4',
+            accent: '#7c3aed'
           }
         }
       }
     }
   </script>
-
-  <!-- SEO / Social preview -->
-  <meta property="og:title" content="Mehdi Hassan — Web Developer" />
-  <meta property="og:description" content="I build fast, responsive websites & help startups convert visitors into customers." />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
-
   <style>
-    /* small helper for smooth entrance animations */
-    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
-    .reveal.show { opacity: 1; transform: translateY(0); }
+    html,body{height:100%}
+    body{opacity:0;background:linear-gradient(180deg,#0f1724 0%,#0b1220 100%);color:rgba(241,245,249,0.95);} 
+    .glass{background:rgba(255,255,255,0.03);backdrop-filter:blur(6px);}
+    .btn-accent{background:linear-gradient(90deg,#0ea5a4,#7c3aed);}
   </style>
 </head>
-<body class="antialiased text-slate-800 bg-white">
-  <!-- NAVBAR -->
-  <header class="fixed w-full z-40 bg-white/60 backdrop-blur-md border-b border-slate-200">
+<body class="antialiased leading-relaxed">
+  <!-- NAV -->
+  <header class="fixed w-full z-50 glass border-b border-white/5">
     <div class="container mx-auto px-6 lg:px-12">
       <nav class="flex items-center justify-between h-16">
-        <a href="#" class="flex items-center gap-3">
+        <a href="index.html" class="flex items-center gap-3">
           <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-semibold">MH</div>
           <span class="font-semibold">Mehdi Hassan</span>
         </a>
 
         <div class="hidden md:flex items-center gap-6">
-          <a href="#about" class="hover:text-primary">About</a>
-          <a href="#work" class="hover:text-primary">Work</a>
-          <a href="#testimonials" class="hover:text-primary">Testimonials</a>
-          <a href="#contact" class="hover:text-primary">Contact</a>
-          <a href="#" class="ml-2 inline-block rounded-md bg-primary text-white px-4 py-2 text-sm font-medium">Hire me</a>
+          <a href="index.html" class="hover:text-primary">Home</a>
+          <a href="about.html" class="hover:text-primary">About</a>
+          <a href="portfolio.html" class="hover:text-primary">Portfolio</a>
+          <a href="testimonials.html" class="hover:text-primary">Testimonials</a>
+          <a href="contact.html" class="hover:text-primary">Contact</a>
+          <a href="contact.html" class="ml-2 inline-block rounded-md text-white px-4 py-2 text-sm font-medium btn-accent">Hire me</a>
         </div>
 
-        <!-- Mobile menu button -->
-        <div class="md:hidden">
-          <button id="menuBtn" aria-label="Toggle menu" class="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
-            <svg id="menuOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-            <svg id="menuClose" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
+        <!-- Mobile -->
+        <div class="md:hidden flex items-center">
+          <button id="menuBtn" aria-label="Toggle menu" class="p-2 rounded-md focus:outline-none">
+            <svg id="menuOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            <svg id="menuClose" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
           </button>
         </div>
       </nav>
     </div>
 
     <!-- Mobile panel -->
-    <div id="mobilePanel" class="md:hidden hidden border-t border-slate-200">
-      <div class="px-6 py-4 flex flex-col gap-3">
-        <a href="#about" class="py-2">About</a>
-        <a href="#work" class="py-2">Work</a>
-        <a href="#testimonials" class="py-2">Testimonials</a>
-        <a href="#contact" class="py-2">Contact</a>
-        <a href="#" class="mt-2 inline-block rounded-md bg-primary text-white px-4 py-2 text-sm font-medium">Hire me</a>
+    <div id="mobilePanel" class="md:hidden hidden border-t border-white/5">
+      <div class="px-6 py-4 flex flex-col gap-3 glass">
+        <a href="index.html" class="py-2">Home</a>
+        <a href="about.html" class="py-2">About</a>
+        <a href="portfolio.html" class="py-2">Portfolio</a>
+        <a href="testimonials.html" class="py-2">Testimonials</a>
+        <a href="contact.html" class="py-2">Contact</a>
+        <a href="contact.html" class="mt-2 inline-block rounded-md text-white px-4 py-2 text-sm font-medium btn-accent">Hire me</a>
       </div>
     </div>
   </header>
 
   <main class="pt-24">
     <!-- HERO -->
-    <section class="container mx-auto px-6 lg:px-12 py-16 lg:py-28">
+    <section class="container mx-auto px-6 lg:px-12 py-20">
       <div class="grid lg:grid-cols-2 gap-10 items-center">
-        <div class="space-y-6">
-          <p class="text-sm font-medium text-primary">Hi, I’m Mehdi — Web Developer</p>
+        <div class="space-y-6 fade-in-up">
+          <p class="text-sm font-medium text-primary">Hey, I’m Mehdi — Web Developer</p>
           <h1 class="text-4xl lg:text-5xl font-extrabold leading-tight">I build high-converting websites for startups & local businesses.</h1>
-          <p class="text-slate-600 max-w-xl">I focus on fast performance, clean UI, and SEO-first development so your site ranks and converts. I’ve helped clients increase leads and build credible online presence.</p>
+          <p class="text-slate-300 max-w-xl">I focus on fast performance, clean UI, and SEO-first development so your site ranks and converts. I’ve helped clients increase leads and build credible online presence.</p>
 
           <div class="flex items-center gap-4">
-            <a href="#contact" class="inline-block rounded-md bg-primary text-white px-6 py-3 font-medium">Work with me</a>
-            <a href="#work" class="inline-block rounded-md border border-slate-200 px-5 py-3 text-sm">See portfolio</a>
+            <a href="contact.html" class="inline-block rounded-md text-white px-6 py-3 font-medium btn-accent">Work with me</a>
+            <a href="portfolio.html" class="inline-block rounded-md border border-white/10 px-5 py-3 text-sm">See portfolio</a>
           </div>
 
-          <div class="mt-6 flex gap-4 items-center text-sm text-slate-500">
+          <div class="mt-6 flex gap-4 items-center text-sm text-slate-400">
             <div class="flex items-center gap-3">
-              <div class="h-10 w-10 rounded-full bg-slate-100 flex items-center justify-center">🚀</div>
+              <div class="h-10 w-10 rounded-full bg-white/3 flex items-center justify-center">🚀</div>
               <div>
                 <div class="font-medium">Trusted by startups</div>
-                <div class="text-xs">Multiple verticals — SaaS, local services</div>
+                <div class="text-xs">SaaS, local services</div>
               </div>
             </div>
 
             <div class="flex items-center gap-3">
-              <div class="h-10 w-10 rounded-full bg-slate-100 flex items-center justify-center">⭐</div>
+              <div class="h-10 w-10 rounded-full bg-white/3 flex items-center justify-center">⭐</div>
               <div>
                 <div class="font-medium">Result-driven</div>
-                <div class="text-xs">SEO + performance focused</div>
+                <div class="text-xs">SEO + performance</div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Hero image / mockup -->
-        <div class="relative">
-          <div class="rounded-2xl border border-slate-100 p-6 shadow-lg bg-gradient-to-br from-white to-slate-50">
+        <!-- Mockup -->
+        <div class="relative fade-in-up">
+          <div class="rounded-2xl border border-white/5 p-6 shadow-lg glass">
             <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="project mockup" class="w-full rounded-lg object-cover h-72 md:h-96" />
           </div>
 
-          <div class="absolute -bottom-6 left-6 bg-white rounded-xl p-4 shadow-md border border-slate-100 w-64">
-            <div class="text-xs text-slate-500">Featured project</div>
+          <div class="absolute -bottom-6 left-6 glass rounded-xl p-4 shadow-md border border-white/5 w-64">
+            <div class="text-xs text-slate-300">Featured project</div>
             <div class="font-semibold">SaaS Landing Page — +37% conversions</div>
-            <div class="text-sm text-slate-500 mt-1">Design, dev & SEO</div>
+            <div class="text-sm text-slate-400 mt-1">Design, dev & SEO</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="container mx-auto px-6 lg:px-12 py-12">
-      <div class="max-w-4xl mx-auto text-center reveal">
+    <!-- ABOUT PREVIEW -->
+    <section class="container mx-auto px-6 lg:px-12 py-12">
+      <div class="max-w-4xl mx-auto text-center fade-in-up">
         <h2 class="text-2xl font-bold">About me</h2>
-        <p class="mt-4 text-slate-600">I’m a web developer focused on building performant, accessible, and SEO-friendly websites. My process blends design thinking, clean code, and measurable goals so your project actually moves the needle.</p>
+        <p class="mt-4 text-slate-300">I’m a web developer focused on building performant, accessible, and SEO-friendly websites. My process blends design thinking, clean code, and measurable goals so your project actually moves the needle.</p>
 
-        <div class="mt-8 grid sm:grid-cols-3 gap-4">
-          <div class="p-4 border rounded-lg">
+        <div class="mt-8 grid sm:grid-cols-3 gap-4 stagger-up">
+          <div class="p-4 glass border rounded-lg">
             <div class="text-3xl font-extrabold">3+</div>
-            <div class="text-sm text-slate-500">Years building websites</div>
+            <div class="text-sm text-slate-400">Years building websites</div>
           </div>
-          <div class="p-4 border rounded-lg">
+          <div class="p-4 glass border rounded-lg">
             <div class="text-3xl font-extrabold">30+</div>
-            <div class="text-sm text-slate-500">Projects shipped</div>
+            <div class="text-sm text-slate-400">Projects shipped</div>
           </div>
-          <div class="p-4 border rounded-lg">
+          <div class="p-4 glass border rounded-lg">
             <div class="text-3xl font-extrabold">Local & Remote</div>
-            <div class="text-sm text-slate-500">Clients worldwide</div>
+            <div class="text-sm text-slate-400">Clients worldwide</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- WORK / PORTFOLIO -->
+    <!-- WORK -->
     <section id="work" class="container mx-auto px-6 lg:px-12 py-12">
-      <div class="flex items-center justify-between mb-6">
+      <div class="flex items-center justify-between mb-6 fade-in-up">
         <h3 class="text-xl font-semibold">Selected work</h3>
-        <a href="#" class="text-sm hover:text-primary">View all projects</a>
+        <a href="portfolio.html" class="text-sm hover:text-primary">View all projects</a>
       </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 stagger-up">
         <!-- Project Card 1 -->
-        <article class="rounded-xl overflow-hidden border hover:shadow-lg transition-shadow bg-white">
+        <article class="rounded-xl overflow-hidden border hover:shadow-lg transition-shadow bg-white/3">
           <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="project 1" class="w-full h-48 object-cover" />
           <div class="p-4">
             <h4 class="font-semibold">E-commerce Refresh</h4>
-            <p class="text-sm text-slate-500 mt-1">Design + Development — improved conversion rate.</p>
+            <p class="text-sm text-slate-300 mt-1">Design + Development — improved conversion rate.</p>
             <div class="mt-3 flex items-center justify-between">
-              <a href="#" class="text-sm text-primary">Case study</a>
+              <a href="portfolio.html" class="text-sm text-primary">Case study</a>
               <span class="text-xs text-slate-400">React, Tailwind</span>
             </div>
           </div>
         </article>
 
         <!-- Project Card 2 -->
-        <article class="rounded-xl overflow-hidden border hover:shadow-lg transition-shadow bg-white">
+        <article class="rounded-xl overflow-hidden border hover:shadow-lg transition-shadow bg-white/3">
           <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="project 2" class="w-full h-48 object-cover" />
           <div class="p-4">
             <h4 class="font-semibold">SaaS Landing</h4>
-            <p class="text-sm text-slate-500 mt-1">Landing optimization — faster load & better copy.</p>
+            <p class="text-sm text-slate-300 mt-1">Landing optimization — faster load & better copy.</p>
             <div class="mt-3 flex items-center justify-between">
-              <a href="#" class="text-sm text-primary">Case study</a>
+              <a href="portfolio.html" class="text-sm text-primary">Case study</a>
               <span class="text-xs text-slate-400">Next.js</span>
             </div>
           </div>
         </article>
 
         <!-- Project Card 3 -->
-        <article class="rounded-xl overflow-hidden border hover:shadow-lg transition-shadow bg-white">
+        <article class="rounded-xl overflow-hidden border hover:shadow-lg transition-shadow bg-white/3">
           <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="project 3" class="w-full h-48 object-cover" />
           <div class="p-4">
             <h4 class="font-semibold">Local Business Site</h4>
-            <p class="text-sm text-slate-500 mt-1">SEO-first site for local clients — doubled organic leads.</p>
+            <p class="text-sm text-slate-300 mt-1">SEO-first site for local clients — doubled organic leads.</p>
             <div class="mt-3 flex items-center justify-between">
-              <a href="#" class="text-sm text-primary">Case study</a>
+              <a href="portfolio.html" class="text-sm text-primary">Case study</a>
               <span class="text-xs text-slate-400">HTML & Tailwind</span>
             </div>
           </div>
@@ -200,47 +195,64 @@
       </div>
     </section>
 
-    <!-- TESTIMONIALS -->
-    <section id="testimonials" class="container mx-auto px-6 lg:px-12 py-12 bg-slate-50">
-      <div class="max-w-3xl mx-auto text-center">
+    <!-- TESTIMONIALS PREVIEW -->
+    <section class="container mx-auto px-6 lg:px-12 py-12 bg-white/2 rounded-xl glass">
+      <div class="max-w-3xl mx-auto text-center fade-in-up">
         <h3 class="text-xl font-semibold">What clients say</h3>
-        <div class="mt-6 space-y-6">
-          <blockquote class="bg-white p-6 rounded-lg shadow-sm border">
-            <p class="text-slate-700">"Mehdi rebuilt our website and we saw a clear lift in leads within 2 months. Super professional and quick."</p>
-            <footer class="mt-4 text-sm text-slate-500">— Client Name, CEO @ Company</footer>
-          </blockquote>
-
-          <blockquote class="bg-white p-6 rounded-lg shadow-sm border">
-            <p class="text-slate-700">"Great communication, on-time delivery, and the final product looked fantastic."</p>
-            <footer class="mt-4 text-sm text-slate-500">— Another Client, Founder</footer>
-          </blockquote>
+        <p class="mt-4 text-slate-300">"Mehdi rebuilt our website and we saw a clear lift in leads within 2 months. Super professional and quick." — Client</p>
+        <div class="mt-6">
+          <a href="testimonials.html" class="inline-block rounded-md text-white px-5 py-2 btn-accent">Read more</a>
         </div>
       </div>
     </section>
 
     <!-- CONTACT CTA -->
     <section id="contact" class="container mx-auto px-6 lg:px-12 py-12">
-      <div class="max-w-3xl mx-auto text-center reveal">
+      <div class="max-w-3xl mx-auto text-center fade-in-up">
         <h3 class="text-2xl font-semibold">Let’s build something great</h3>
-        <p class="mt-3 text-slate-600">If you need a fast, reliable website that actually converts — let’s talk. I help startups and local businesses get measurable results.</p>
+        <p class="mt-3 text-slate-300">If you need a fast, reliable website that actually converts — let’s talk. I help startups and local businesses get measurable results.</p>
 
         <div class="mt-6 flex flex-col sm:flex-row gap-4 items-center justify-center">
-          <a href="mailto:hello@mehdihassan.com" class="inline-block rounded-md bg-primary text-white px-6 py-3">Email me</a>
-          <a href="#" class="inline-block rounded-md border border-slate-200 px-6 py-3">Book a call</a>
+          <a href="contact.html" class="inline-block rounded-md text-white px-6 py-3 font-medium btn-accent">Email me</a>
+          <a href="contact.html" class="inline-block rounded-md border border-white/10 px-6 py-3">Book a call</a>
         </div>
       </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="border-t border-slate-100 py-8">
-      <div class="container mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-4">
-        <div class="flex items-center gap-3">
-          <div class="w-9 h-9 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-semibold">MH</div>
-          <div>
-            <div class="font-semibold">Mehdi Hassan</div>
-            <div class="text-sm text-slate-500">Web Developer — mehdi@mehdihassan.com</div>
-          </div>
+  </main>
+
+  <footer class="border-t border-white/5 py-8 mt-12">
+    <div class="container mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-semibold">MH</div>
+        <div>
+          <div class="font-semibold">Mehdi Hassan</div>
+          <div class="text-sm text-slate-400">Web Developer — mehdi@mehdihassan.com</div>
         </div>
+      </div>
+      <div class="text-sm text-slate-400">© <span id="year"></span> Mehdi Hassan. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    // mobile menu and simple controls
+    const menuBtn = document.getElementById('menuBtn');
+    const mobilePanel = document.getElementById('mobilePanel');
+    const menuOpen = document.getElementById('menuOpen');
+    const menuClose = document.getElementById('menuClose');
+    menuBtn.addEventListener('click', () => {
+      mobilePanel.classList.toggle('hidden');
+      menuOpen.classList.toggle('hidden');
+      menuClose.classList.toggle('hidden');
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <script src="js/animations.js"></script>
+</body>
+</html>
+
         <div class="text-sm text-slate-500">© <span id="year"></span> Mehdi Hassan. All rights reserved.</div>
       </div>
     </footer>
