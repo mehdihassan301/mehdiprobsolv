@@ -9,7 +9,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-KNBdDkFvtr0d+scj6D3q6+mvF9X3T4yN3owv2fQ5E3q8J7N1bXTkzp1z/q8knv4f8l2r9bQnOq9KfLZq1n6Y1g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     body {opacity:0; background:linear-gradient(180deg,#0f1724 0%,#0b1220 100%); color:rgba(241,245,249,0.95);}
     .glass {background:rgba(255,255,255,0.03); backdrop-filter:blur(6px);}
@@ -20,6 +20,7 @@
   </style>
 </head>
 <body class="antialiased leading-relaxed">
+  <!-- HEADER -->
   <header class="fixed w-full z-50 glass border-b border-white/5">
     <div class="container mx-auto px-6 lg:px-12">
       <nav class="flex items-center justify-between h-16">
@@ -43,7 +44,6 @@
         </div>
       </nav>
     </div>
-
     <div id="mobilePanel" class="md:hidden hidden border-t border-white/5">
       <div class="px-6 py-4 flex flex-col gap-3 glass">
         <a href="index.html" class="py-2">Home</a>
@@ -56,6 +56,7 @@
     </div>
   </header>
 
+  <!-- MAIN CONTENT -->
   <main class="pt-24">
     <section class="container mx-auto px-6 lg:px-12 py-20">
       <h1 class="text-4xl font-bold mb-4 text-center">Get in Touch</h1>
@@ -81,7 +82,6 @@
               <a href="https://dribbble.com/yourprofile" target="_blank" class="social-icon"><i class="fab fa-dribbble"></i></a>
             </div>
           </div>
-
           <div>
             <h2 class="text-2xl font-semibold mb-3">Book a Call</h2>
             <p class="text-slate-300 mb-2">Schedule a quick chat to discuss your project.</p>
@@ -92,6 +92,7 @@
     </section>
   </main>
 
+  <!-- FOOTER -->
   <footer class="border-t border-white/5 py-8 mt-12">
     <div class="container mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-4">
       <div class="flex items-center gap-3">
@@ -102,5 +103,31 @@
         </div>
       </div>
       <div class="text-sm text-slate-400">© <span id="year"></span> Mehdi Hassan. All rights reserved.</div>
-   
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    // Show body with fade-in
+    window.addEventListener('load', () => {
+      gsap.to('body', { opacity: 1, duration: 0.8, ease: 'power2.out' });
+      document.getElementById('year').textContent = new Date().getFullYear();
+    });
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobilePanel = document.getElementById('mobilePanel');
+    const menuOpen = document.getElementById('menuOpen');
+    const menuClose = document.getElementById('menuClose');
+    menuBtn.addEventListener('click', () => {
+      mobilePanel.classList.toggle('hidden');
+      menuOpen.classList.toggle('hidden');
+      menuClose.classList.toggle('hidden');
+    });
+  </script>
+
+  <script src="js/animations.js"></script>
+</body>
+</html>
+
 
