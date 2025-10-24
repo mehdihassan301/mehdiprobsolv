@@ -102,3 +102,44 @@
   // Re-init reveals after AJAX/HTMX or dynamic content changes if needed
   window.MehdiAnimations = { initReveals };
 })();
+// Fade-in body
+window.addEventListener('load', () => {
+  gsap.to('body', { opacity: 1, duration: 0.8, ease: 'power2.out' });
+});
+
+// Mobile menu toggle
+const menuBtn = document.getElementById('menuBtn');
+const mobilePanel = document.getElementById('mobilePanel');
+const menuOpen = document.getElementById('menuOpen');
+const menuClose = document.getElementById('menuClose');
+if(menuBtn){
+  menuBtn.addEventListener('click', () => {
+    mobilePanel.classList.toggle('hidden');
+    menuOpen.classList.toggle('hidden');
+    menuClose.classList.toggle('hidden');
+  });
+}
+
+// Animate all cards on scroll
+gsap.utils.toArray('.glass').forEach((card) => {
+  gsap.from(card, {
+    scrollTrigger: {
+      trigger: card,
+      start: 'top 80%',
+    },
+    opacity: 0,
+    y: 30,
+    duration: 0.6,
+    ease: 'power2.out'
+  });
+});
+
+// Hover effects for cards/buttons using GSAP
+gsap.utils.toArray('.btn-accent, .glass, .social-icon').forEach((el) => {
+  el.addEventListener('mouseenter', () => {
+    gsap.to(el, { scale: 1.05, boxShadow: '0 0 20px rgba(124,58,237,0.7)', duration: 0.3 });
+  });
+  el.addEventListener('mouseleave', () => {
+    gsap.to(el, { scale: 1, boxShadow: '0 0 0 rgba(0,0,0,0)', duration: 0.3 });
+  });
+});
