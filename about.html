@@ -66,21 +66,6 @@
   </div>
 </header>
 
-<script>
-  // Mobile menu toggle
-  const menuBtn = document.getElementById('menuBtn');
-  const menuOpen = document.getElementById('menuOpen');
-  const menuClose = document.getElementById('menuClose');
-  const mobilePanel = document.getElementById('mobilePanel');
-
-  menuBtn.addEventListener('click', () => {
-    menuOpen.classList.toggle('hidden');
-    menuClose.classList.toggle('hidden');
-    mobilePanel.classList.toggle('hidden');
-  });
-</script>
-
-
   <main class="pt-24">
     <section class="container mx-auto px-6 lg:px-12 py-16 text-center fade-in-up">
       <h1 class="text-4xl font-bold mb-4">About Me</h1>
@@ -162,19 +147,21 @@ Every project is built with strategy, scalability, and simplicity — designed t
     </div>
   </footer>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    const menuBtn = document.getElementById('menuBtn');
-    const mobilePanel = document.getElementById('mobilePanel');
-    const menuOpen = document.getElementById('menuOpen');
-    const menuClose = document.getElementById('menuClose');
-    menuBtn.addEventListener('click', () => {
-      mobilePanel.classList.toggle('hidden');
-      menuOpen.classList.toggle('hidden');
-      menuClose.classList.toggle('hidden');
-    });
-  </script>
+ <script>
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('menuBtn');
+  const menuOpen = document.getElementById('menuOpen');
+  const menuClose = document.getElementById('menuClose');
+  const mobilePanel = document.getElementById('mobilePanel');
 
-  <script src="js/animations.js"></script>
+  menuBtn.addEventListener('click', () => {
+    menuOpen.classList.toggle('hidden');
+    menuClose.classList.toggle('hidden');
+    mobilePanel.classList.toggle('hidden');
+  });
+</script>
+
+
+
 </body>
 </html>
