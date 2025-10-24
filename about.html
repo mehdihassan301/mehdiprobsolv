@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About — Mehdi Hassan | Web Developer</title>
+  <meta name="description" content="Learn about Mehdi Hassan — a web developer helping startups and local businesses with clean, modern, and SEO-optimized websites." />
+  <link rel="icon" href="/favicon.ico" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <style>
+    body{opacity:0;background:linear-gradient(180deg,#0f1724 0%,#0b1220 100%);color:rgba(241,245,249,0.95);} 
+    .glass{background:rgba(255,255,255,0.03);backdrop-filter:blur(6px);} 
+    .btn-accent{background:linear-gradient(90deg,#0ea5a4,#7c3aed);} 
+  </style>
+</head>
+<body class="antialiased leading-relaxed">
+  <header class="fixed w-full z-50 glass border-b border-white/5">
+    <div class="container mx-auto px-6 lg:px-12">
+      <nav class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-semibold">MH</div>
+          <span class="font-semibold">Mehdi Hassan</span>
+        </a>
+        <div class="hidden md:flex items-center gap-6">
+          <a href="index.html" class="hover:text-primary">Home</a>
+          <a href="about.html" class="text-primary font-medium">About</a>
+          <a href="portfolio.html" class="hover:text-primary">Portfolio</a>
+          <a href="testimonials.html" class="hover:text-primary">Testimonials</a>
+          <a href="contact.html" class="hover:text-primary">Contact</a>
+          <a href="contact.html" class="ml-2 inline-block rounded-md text-white px-4 py-2 text-sm font-medium btn-accent">Hire me</a>
+        </div>
+
+        <div class="md:hidden flex items-center">
+          <button id="menuBtn" aria-label="Toggle menu" class="p-2 rounded-md focus:outline-none">
+            <svg id="menuOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            <svg id="menuClose" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <div id="mobilePanel" class="md:hidden hidden border-t border-white/5">
+      <div class="px-6 py-4 flex flex-col gap-3 glass">
+        <a href="index.html" class="py-2">Home</a>
+        <a href="about.html" class="py-2">About</a>
+        <a href="portfolio.html" class="py-2">Portfolio</a>
+        <a href="testimonials.html" class="py-2">Testimonials</a>
+        <a href="contact.html" class="py-2">Contact</a>
+        <a href="contact.html" class="mt-2 inline-block rounded-md text-white px-4 py-2 text-sm font-medium btn-accent">Hire me</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-24">
+    <section class="container mx-auto px-6 lg:px-12 py-16 text-center fade-in-up">
+      <h1 class="text-4xl font-bold mb-4">About Me</h1>
+      <p class="text-slate-300 max-w-2xl mx-auto">Hey, I’m Mehdi Hassan — a Web Developer passionate about helping businesses and individuals grow through modern, impactful websites. My focus? Clean design, smooth functionality, and real results.</p>
+    </section>
+
+    <section class="container mx-auto px-6 lg:px-12 py-16 border-t border-white/5">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div class="fade-in-up">
+          <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?q=80&w=1200&auto=format&fit=crop" alt="Mehdi working" class="rounded-2xl shadow-lg" />
+        </div>
+        <div class="fade-in-up">
+          <h2 class="text-2xl font-semibold mb-4">My Journey</h2>
+          <p class="text-slate-300 leading-relaxed">I started my web development journey by helping small local businesses create their first online presence. Over time, I’ve grown into building full-scale, responsive websites that combine design excellence with technical precision.</p>
+          <p class="mt-4 text-slate-300 leading-relaxed">Today, I specialize in helping startups and entrepreneurs translate their ideas into engaging, conversion-driven websites — from landing pages to full brand sites.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white/2 py-16">
+      <div class="container mx-auto px-6 lg:px-12">
+        <h2 class="text-2xl font-semibold text-center mb-10 fade-in-up">Skills & Expertise</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 stagger-up">
+          <div class="p-6 glass rounded-xl border shadow-sm text-center">
+            <h3 class="font-semibold mb-2">Frontend Development</h3>
+            <p class="text-slate-300 text-sm">HTML, CSS, Tailwind, JavaScript, React</p>
+          </div>
+          <div class="p-6 glass rounded-xl border shadow-sm text-center">
+            <h3 class="font-semibold mb-2">Backend Basics</h3>
+            <p class="text-slate-300 text-sm">Node.js, Express, Firebase</p>
+          </div>
+          <div class="p-6 glass rounded-xl border shadow-sm text-center">
+            <h3 class="font-semibold mb-2">UI/UX Design</h3>
+            <p class="text-slate-300 text-sm">Figma, Wireframing, Visual Identity</p>
+          </div>
+          <div class="p-6 glass rounded-xl border shadow-sm text-center">
+            <h3 class="font-semibold mb-2">SEO Optimization</h3>
+            <p class="text-slate-300 text-sm">Keyword Strategy, On-page SEO</p>
+          </div>
+          <div class="p-6 glass rounded-xl border shadow-sm text-center">
+            <h3 class="font-semibold mb-2">Website Performance</h3>
+            <p class="text-slate-300 text-sm">Speed, Accessibility, Lighthouse</p>
+          </div>
+          <div class="p-6 glass rounded-xl border shadow-sm text-center">
+            <h3 class="font-semibold mb-2">Client Collaboration</h3>
+            <p class="text-slate-300 text-sm">Transparent communication & timely delivery</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container mx-auto px-6 lg:px-12 py-16">
+      <div class="max-w-3xl mx-auto text-center fade-in-up">
+        <h2 class="text-2xl font-semibold mb-4">My Mission</h2>
+        <p class="text-slate-300">To empower businesses and creators by turning their ideas into meaningful, high-performing websites that drive engagement and growth. Every project I take on is built with passion, strategy, and precision.</p>
+      </div>
+    </section>
+
+    <section class="bg-gradient-to-br from-primary to-accent text-white py-20 fade-in-up">
+      <div class="container mx-auto px-6 lg:px-12 text-center">
+        <h2 class="text-3xl font-bold mb-4">Let’s Build Something Amazing</h2>
+        <p class="max-w-2xl mx-auto mb-8 text-white/90">Whether you’re launching your first product or refining your brand site — I’ll help you build a digital presence that stands out.</p>
+        <a href="contact.html" class="inline-block bg-white text-primary font-medium px-6 py-3 rounded-md">Contact Me</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/5 py-8 fade-in-up">
+    <div class="container mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-semibold">MH</div>
+        <div>
+          <div class="font-semibold">Mehdi Hassan</div>
+          <div class="text-sm text-slate-400">Web Developer — mehdi@mehdihassan.com</div>
+        </div>
+      </div>
+      <div class="text-sm text-slate-400">© <span id="year"></span> Mehdi Hassan. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const menuBtn = document.getElementById('menuBtn');
+    const mobilePanel = document.getElementById('mobilePanel');
+    const menuOpen = document.getElementById('menuOpen');
+    const menuClose = document.getElementById('menuClose');
+    menuBtn.addEventListener('click', () => {
+      mobilePanel.classList.toggle('hidden');
+      menuOpen.classList.toggle('hidden');
+      menuClose.classList.toggle('hidden');
+    });
+  </script>
+
+  <script src="js/animations.js"></script>
+</body>
+</html>
