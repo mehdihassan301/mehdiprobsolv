@@ -9,10 +9,13 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
     body{opacity:0;background:linear-gradient(180deg,#0f1724 0%,#0b1220 100%);color:rgba(241,245,249,0.95);} 
     .glass{background:rgba(255,255,255,0.03);backdrop-filter:blur(6px);} 
     .btn-accent{background:linear-gradient(90deg,#0ea5a4,#7c3aed);} 
+    .social-icon {font-size:1.5rem; color:rgba(241,245,249,0.7); transition: color 0.3s, transform 0.3s;}
+    .social-icon:hover {color:#7c3aed; transform: scale(1.2);}
   </style>
 </head>
 <body class="antialiased leading-relaxed">
@@ -72,10 +75,10 @@
           <div>
             <h2 class="text-2xl font-semibold mb-3">Connect with me</h2>
             <div class="flex gap-4 justify-center md:justify-start">
-              <a href="#" class="hover:text-primary">LinkedIn</a>
-              <a href="#" class="hover:text-primary">Twitter</a>
-              <a href="#" class="hover:text-primary">GitHub</a>
-              <a href="#" class="hover:text-primary">Dribbble</a>
+              <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+              <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+              <a href="#" class="social-icon"><i class="fab fa-dribbble"></i></a>
             </div>
           </div>
 
