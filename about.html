@@ -16,56 +16,47 @@
   </style>
 </head>
 <body class="antialiased leading-relaxed">
-  <header class="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-black/40 border-b border-white/10 shadow-lg transition-all duration-500">
-  <div class="container mx-auto px-6 lg:px-12">
-    <nav class="flex items-center justify-between h-16">
-      <!-- Brand -->
-      <a href="index.html" class="flex items-center gap-3 group">
-        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-semibold shadow-md transition-transform duration-300 group-hover:scale-110">MH</div>
-        <span class="font-semibold text-white tracking-wide group-hover:text-primary transition-colors duration-300">Mehdi Hassan</span>
-      </a>
-
-      <!-- Desktop Menu -->
-      <div class="hidden md:flex items-center gap-8">
-        <a href="index.html" class="text-gray-300 hover:text-primary transition-colors duration-300">Home</a>
-        <a href="about.html" class="text-primary font-medium">About</a>
-        <a href="portfolio.html" class="text-gray-300 hover:text-primary transition-colors duration-300">Portfolio</a>
-        <a href="testimonials.html" class="text-gray-300 hover:text-primary transition-colors duration-300">Testimonials</a>
-        <a href="contact.html" class="text-gray-300 hover:text-primary transition-colors duration-300">Contact</a>
-        <a href="contact.html" class="ml-2 inline-block rounded-md text-white px-5 py-2 text-sm font-semibold bg-gradient-to-r from-primary to-accent hover:opacity-90 hover:scale-105 transition-transform duration-300 shadow-md">
-          Hire Me
+   <!-- NAV -->
+  <header class="fixed w-full z-50 glass border-b border-white/5">
+    <div class="container mx-auto px-6 lg:px-12">
+      <nav class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-semibold">MH</div>
+          <span class="font-semibold">Mehdi Hassan</span>
         </a>
-      </div>
 
-      <!-- Mobile Menu Button -->
-      <div class="md:hidden flex items-center">
-        <button id="menuBtn" aria-label="Toggle menu" class="p-2 rounded-md focus:outline-none">
-          <svg id="menuOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
-          <svg id="menuClose" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-          </svg>
-        </button>
-      </div>
-    </nav>
-  </div>
+        <div class="hidden md:flex items-center gap-6">
+          <a href="index.html" class="hover:text-primary">Home</a>
+          <a href="about.html" class="hover:text-primary">About</a>
+          <a href="portfolio.html" class="hover:text-primary">Portfolio</a>
+          <a href="testimonials.html" class="hover:text-primary">Testimonials</a>
+          <a href="contact.html" class="hover:text-primary">Contact</a>
+          <a href="contact.html" class="ml-2 inline-block rounded-md text-white px-4 py-2 text-sm font-medium btn-accent">Hire me</a>
+        </div>
 
-  <!-- Mobile Menu Panel -->
-  <div id="mobilePanel" class="md:hidden hidden border-t border-white/10 bg-black/70 backdrop-blur-xl">
-    <div class="px-6 py-4 flex flex-col gap-3 text-white">
-      <a href="index.html" class="py-2 hover:text-primary transition-colors">Home</a>
-      <a href="about.html" class="py-2 text-primary">About</a>
-      <a href="portfolio.html" class="py-2 hover:text-primary transition-colors">Portfolio</a>
-      <a href="testimonials.html" class="py-2 hover:text-primary transition-colors">Testimonials</a>
-      <a href="contact.html" class="py-2 hover:text-primary transition-colors">Contact</a>
-      <a href="contact.html" class="mt-3 inline-block rounded-md text-white px-5 py-2 text-sm font-semibold bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-transform duration-300 shadow-md">
-        Hire Me
-      </a>
+        <!-- Mobile -->
+        <div class="md:hidden flex items-center">
+          <button id="menuBtn" aria-label="Toggle menu" class="p-2 rounded-md focus:outline-none">
+            <svg id="menuOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            <svg id="menuClose" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+      </nav>
     </div>
-  </div>
-</header>
 
+    <!-- Mobile Panel -->
+    <div id="mobilePanel" class="md:hidden hidden border-t border-white/5">
+      <div class="px-6 py-4 flex flex-col gap-3 glass">
+        <a href="index.html" class="py-2">Home</a>
+        <a href="about.html" class="py-2">About</a>
+        <a href="portfolio.html" class="py-2">Portfolio</a>
+        <a href="testimonials.html" class="py-2">Testimonials</a>
+        <a href="contact.html" class="py-2">Contact</a>
+        <a href="contact.html" class="mt-2 inline-block rounded-md text-white px-4 py-2 text-sm font-medium btn-accent">Hire me</a>
+      </div>
+    </div>
+  </header>
+  
   <main class="pt-24">
     <section class="container mx-auto px-6 lg:px-12 py-16 text-center fade-in-up">
       <h1 class="text-4xl font-bold mb-4">About Me</h1>
@@ -162,6 +153,6 @@ Every project is built with strategy, scalability, and simplicity — designed t
 </script>
 
 
-
+<script src="js/animations.js"></script>
 </body>
 </html>
