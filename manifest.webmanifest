@@ -1,0 +1,15 @@
+{
+  "name": "ProbSolv - Mehdi Hassan",
+  "short_name": "ProbSolv",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "/assets/images/favicon.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    }
+  ]
+}
