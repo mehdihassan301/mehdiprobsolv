@@ -14,9 +14,9 @@
     body {opacity:0; background:linear-gradient(180deg,#0f1724 0%,#0b1220 100%); color:rgba(241,245,249,0.95);}
     .glass {background:rgba(255,255,255,0.03); backdrop-filter:blur(6px);}
     .btn-accent {background:linear-gradient(90deg,#0ea5a4,#7c3aed);}
-    .social-icon {font-size:1.5rem; color:rgba(241,245,249,0.7); transition: color 0.3s, transform 0.3s;}
+    .social-icon {font-size:1.5rem; color:rgba(241,245,249,0.7); transition: color 0.3s, transform 0.3s; display:inline-block;}
     .social-icon:hover {color:#7c3aed; transform: scale(1.2);}
-    .social-icon i {display: inline-block; font-style: normal;}
+    .social-icon i { display: inline-block; font-style: normal; }
   </style>
 </head>
 <body class="antialiased leading-relaxed">
@@ -75,16 +75,17 @@
           <div>
             <h2 class="text-2xl font-semibold mb-3">Connect with me</h2>
             <div class="flex gap-4 justify-center md:justify-start mt-2">
-              <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
-              <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-              <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
-              <a href="#" class="social-icon"><i class="fab fa-dribbble"></i></a>
+              <a href="https://linkedin.com/in/yourprofile" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
+              <a href="https://twitter.com/yourprofile" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+              <a href="https://github.com/yourprofile" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+              <a href="https://dribbble.com/yourprofile" target="_blank" class="social-icon"><i class="fab fa-dribbble"></i></a>
             </div>
           </div>
+
           <div>
             <h2 class="text-2xl font-semibold mb-3">Book a Call</h2>
             <p class="text-slate-300 mb-2">Schedule a quick chat to discuss your project.</p>
-            <a href="#" class="btn-accent text-white font-medium rounded-md px-6 py-3">Book Now</a>
+            <a href="https://wa.me/923272583013?text=Hello%20Mehdi,%20I%20want%20to%20discuss%20my%20project" target="_blank" class="btn-accent text-white font-medium rounded-md px-6 py-3">Book Now</a>
           </div>
         </div>
       </div>
@@ -101,19 +102,5 @@
         </div>
       </div>
       <div class="text-sm text-slate-400">© <span id="year"></span> Mehdi Hassan. All rights reserved.</div>
-    </div>
-  </footer>
+   
 
-  <script>
-    // Show body even if GSAP fails
-    window.addEventListener('load', () => {
-      if (typeof gsap !== 'undefined') {
-        gsap.to('body', { opacity: 1, duration: 0.8, ease: 'power2.out' });
-      } else {
-        document.body.style.opacity = 1;
-      }
-      document.getElementById('year').textContent = new Date().getFullYear();
-    });
-  </script>
-  <script src="js/animations.js"></script>
-</body
