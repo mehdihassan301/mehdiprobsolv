@@ -11,12 +11,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-KNBdDkFvtr0d+scj6D3q6+mvF9X3T4yN3owv2fQ5E3q8J7N1bXTkzp1z/q8knv4f8l2r9bQnOq9KfLZq1n6Y1g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
-    body{opacity:0;background:linear-gradient(180deg,#0f1724 0%,#0b1220 100%);color:rgba(241,245,249,0.95);} 
-    .glass{background:rgba(255,255,255,0.03);backdrop-filter:blur(6px);} 
-    .btn-accent{background:linear-gradient(90deg,#0ea5a4,#7c3aed);} 
+    body {opacity:0; background:linear-gradient(180deg,#0f1724 0%,#0b1220 100%); color:rgba(241,245,249,0.95);}
+    .glass {background:rgba(255,255,255,0.03); backdrop-filter:blur(6px);}
+    .btn-accent {background:linear-gradient(90deg,#0ea5a4,#7c3aed);}
     .social-icon {font-size:1.5rem; color:rgba(241,245,249,0.7); transition: color 0.3s, transform 0.3s;}
     .social-icon:hover {color:#7c3aed; transform: scale(1.2);}
-    .social-icon i { display: inline-block; font-style: normal; }
+    .social-icon i {display: inline-block; font-style: normal;}
   </style>
 </head>
 <body class="antialiased leading-relaxed">
@@ -35,7 +35,6 @@
           <a href="contact.html" class="text-primary font-medium">Contact</a>
           <a href="contact.html" class="ml-2 inline-block rounded-md text-white px-4 py-2 text-sm font-medium btn-accent">Hire me</a>
         </div>
-
         <div class="md:hidden flex items-center">
           <button id="menuBtn" aria-label="Toggle menu" class="p-2 rounded-md focus:outline-none">
             <svg id="menuOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -58,7 +57,7 @@
   </header>
 
   <main class="pt-24">
-    <section class="container mx-auto px-6 lg:px-12 py-20 fade-in-up">
+    <section class="container mx-auto px-6 lg:px-12 py-20">
       <h1 class="text-4xl font-bold mb-4 text-center">Get in Touch</h1>
       <p class="text-slate-300 text-center max-w-2xl mx-auto mb-12">Have a project or idea in mind? Fill out the form or connect with me on social media. You can also book a call directly!</p>
 
@@ -82,7 +81,6 @@
               <a href="#" class="social-icon"><i class="fab fa-dribbble"></i></a>
             </div>
           </div>
-
           <div>
             <h2 class="text-2xl font-semibold mb-3">Book a Call</h2>
             <p class="text-slate-300 mb-2">Schedule a quick chat to discuss your project.</p>
@@ -93,7 +91,7 @@
     </section>
   </main>
 
-  <footer class="border-t border-white/5 py-8 mt-12 fade-in-up">
+  <footer class="border-t border-white/5 py-8 mt-12">
     <div class="container mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-4">
       <div class="flex items-center gap-3">
         <div class="w-9 h-9 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-semibold">MH</div>
@@ -107,4 +105,15 @@
   </footer>
 
   <script>
-    document.getElementById('year').textContent
+    // Show body even if GSAP fails
+    window.addEventListener('load', () => {
+      if (typeof gsap !== 'undefined') {
+        gsap.to('body', { opacity: 1, duration: 0.8, ease: 'power2.out' });
+      } else {
+        document.body.style.opacity = 1;
+      }
+      document.getElementById('year').textContent = new Date().getFullYear();
+    });
+  </script>
+  <script src="js/animations.js"></script>
+</body
