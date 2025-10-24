@@ -41,7 +41,17 @@
   box-shadow: 0 10px 20px rgba(124,58,237,0.5);
 }
 
-/* Card hover effect */
+/* Buttons */
+.btn-accent {
+  background: linear-gradient(90deg,#0ea5a4,#7c3aed);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.btn-accent:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(124,58,237,0.5);
+}
+
+/* Cards */
 .card-hover {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -50,7 +60,7 @@
   box-shadow: 0 15px 25px rgba(124,58,237,0.4);
 }
 
-/* Fade-in on scroll */
+/* Fade-in */
 .fade-in-up {
   opacity: 0;
   transform: translateY(20px);
@@ -187,6 +197,7 @@
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 stagger-up">
         <!-- Project Card 1 -->
       <article class="rounded-xl overflow-hidden border bg-white/3 card-hover">
+        <a href="contact.html" class="btn-accent text-white font-medium rounded-md px-6 py-3">
   <img src="..." alt="project 1" class="w-full h-48 object-cover" />
   <div class="p-4">
     <h4 class="font-semibold">E-commerce Refresh</h4>
