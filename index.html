@@ -2,196 +2,287 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Mehdi Hassan — Full Stack & Frontend Developer | ProbSolv</title>
-  <meta name="description" content="ProbSolv — Professional website development, full stack and frontend services, digital branding, and portfolio site creation. Based in Pakistan.">
-  <meta name="keywords" content="Website Developer in Pakistan, Full Stack Web Developer, Frontend Developer Portfolio, Website Design, Digital Branding">
-  <meta name="author" content="Mehdi Hassan | ProbSolv">
-  <meta property="og:title" content="Mehdi Hassan — Full Stack & Frontend Developer" />
-  <meta property="og:description" content="Professional website development, digital branding and portfolio services by ProbSolv." />
-  <meta property="og:image" content="/assets/images/portfolio-1.svg" />
-  <meta property="og:type" content="website" />
-  <link rel="icon" href="/assets/images/favicon.svg" />
-  <link rel="manifest" href="/manifest.webmanifest" />
-  <meta name="theme-color" content="#0f172a" />
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@graph":[
-      {
-        "@type":"Organization",
-        "name":"ProbSolv",
-        "url":"https://probsolv.online",
-        "logo":"https://probsolv.online/assets/images/favicon.svg",
-        "sameAs":["https://www.linkedin.com/"]
-      },
-      {
-        "@type":"WebSite",
-        "url":"https://probsolv.online",
-        "potentialAction":{
-          "@type":"SearchAction",
-          "target":"https://probsolv.online/?s={search_term_string}",
-          "query-input":"required name=search_term_string"
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mehdi Hassan — Web Developer & Designer</title>
+  <meta name="description" content="Mehdi Hassan — Web developer helping startups & local businesses scale with high-converting websites, clean UI, and SEO." />
+  <meta name="author" content="Mehdi Hassan" />
+  <link rel="icon" href="/favicon.ico" />
+
+  <!-- Tailwind Play CDN for quick dev (replace with a build pipeline for production) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind config (custom colors + container)
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0ea5a4', // teal-500-ish
+            accent: '#7c3aed'   // violet
+          }
         }
       }
-    ]
-  }
+    }
   </script>
-  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <!-- SEO / Social preview -->
+  <meta property="og:title" content="Mehdi Hassan — Web Developer" />
+  <meta property="og:description" content="I build fast, responsive websites & help startups convert visitors into customers." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <style>
+    /* small helper for smooth entrance animations */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.show { opacity: 1; transform: translateY(0); }
+  </style>
 </head>
-<body class="bg-black text-gray-100">
-  <header class="site-header" id="header">
-    <div class="container">
-      <a class="brand" href="/">ProbSolv</a>
-      <nav class="nav" id="nav">
-        <a href="#services">Services</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+<body class="antialiased text-slate-800 bg-white">
+  <!-- NAVBAR -->
+  <header class="fixed w-full z-40 bg-white/60 backdrop-blur-md border-b border-slate-200">
+    <div class="container mx-auto px-6 lg:px-12">
+      <nav class="flex items-center justify-between h-16">
+        <a href="#" class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-semibold">MH</div>
+          <span class="font-semibold">Mehdi Hassan</span>
+        </a>
+
+        <div class="hidden md:flex items-center gap-6">
+          <a href="#about" class="hover:text-primary">About</a>
+          <a href="#work" class="hover:text-primary">Work</a>
+          <a href="#testimonials" class="hover:text-primary">Testimonials</a>
+          <a href="#contact" class="hover:text-primary">Contact</a>
+          <a href="#" class="ml-2 inline-block rounded-md bg-primary text-white px-4 py-2 text-sm font-medium">Hire me</a>
+        </div>
+
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button id="menuBtn" aria-label="Toggle menu" class="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+            <svg id="menuOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="menuClose" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
       </nav>
-      <button id="nav-toggle" aria-label="Toggle navigation">☰</button>
+    </div>
+
+    <!-- Mobile panel -->
+    <div id="mobilePanel" class="md:hidden hidden border-t border-slate-200">
+      <div class="px-6 py-4 flex flex-col gap-3">
+        <a href="#about" class="py-2">About</a>
+        <a href="#work" class="py-2">Work</a>
+        <a href="#testimonials" class="py-2">Testimonials</a>
+        <a href="#contact" class="py-2">Contact</a>
+        <a href="#" class="mt-2 inline-block rounded-md bg-primary text-white px-4 py-2 text-sm font-medium">Hire me</a>
+      </div>
     </div>
   </header>
 
-  <main id="main">
-    <section class="hero" style="background-image: url('/assets/images/portfolio-1.svg');">
-      <div class="container hero-inner">
-        <h1>Mehdi Hassan — I build digital experiences</h1>
-        <p class="lead">Websites that look modern, perform fast, and grow your business.</p>
-        <p class="muted">Full Stack & Frontend Development • Digital Branding • SEO-ready sites</p>
-        <div class="cta">
-          <a href="#contact" class="btn primary">Work with me</a>
-          <a href="#portfolio" class="btn">See portfolio</a>
+  <main class="pt-24">
+    <!-- HERO -->
+    <section class="container mx-auto px-6 lg:px-12 py-16 lg:py-28">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div class="space-y-6">
+          <p class="text-sm font-medium text-primary">Hi, I’m Mehdi — Web Developer</p>
+          <h1 class="text-4xl lg:text-5xl font-extrabold leading-tight">I build high-converting websites for startups & local businesses.</h1>
+          <p class="text-slate-600 max-w-xl">I focus on fast performance, clean UI, and SEO-first development so your site ranks and converts. I’ve helped clients increase leads and build credible online presence.</p>
+
+          <div class="flex items-center gap-4">
+            <a href="#contact" class="inline-block rounded-md bg-primary text-white px-6 py-3 font-medium">Work with me</a>
+            <a href="#work" class="inline-block rounded-md border border-slate-200 px-5 py-3 text-sm">See portfolio</a>
+          </div>
+
+          <div class="mt-6 flex gap-4 items-center text-sm text-slate-500">
+            <div class="flex items-center gap-3">
+              <div class="h-10 w-10 rounded-full bg-slate-100 flex items-center justify-center">🚀</div>
+              <div>
+                <div class="font-medium">Trusted by startups</div>
+                <div class="text-xs">Multiple verticals — SaaS, local services</div>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <div class="h-10 w-10 rounded-full bg-slate-100 flex items-center justify-center">⭐</div>
+              <div>
+                <div class="font-medium">Result-driven</div>
+                <div class="text-xs">SEO + performance focused</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero image / mockup -->
+        <div class="relative">
+          <div class="rounded-2xl border border-slate-100 p-6 shadow-lg bg-gradient-to-br from-white to-slate-50">
+            <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="project mockup" class="w-full rounded-lg object-cover h-72 md:h-96" />
+          </div>
+
+          <div class="absolute -bottom-6 left-6 bg-white rounded-xl p-4 shadow-md border border-slate-100 w-64">
+            <div class="text-xs text-slate-500">Featured project</div>
+            <div class="font-semibold">SaaS Landing Page — +37% conversions</div>
+            <div class="text-sm text-slate-500 mt-1">Design, dev & SEO</div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="services" class="section">
-      <div class="container">
-        <h2>Services</h2>
-        <p class="muted">Website development & design, frontend & full stack, digital branding, portfolios and digital services.</p>
-        <div class="grid services-grid">
-          <article class="card">
-            <h3>Website Development</h3>
-            <p>Custom websites using modern standards — responsive, fast and SEO-friendly.</p>
-          </article>
-          <article class="card">
-            <h3>Full Stack Development</h3>
-            <p>Back-end integration, hosting, and solid deployments on Vercel and cloud platforms.</p>
-          </article>
-          <article class="card">
-            <h3>Frontend & UI</h3>
-            <p>Pixel-perfect frontend, interactions, and performance optimizations.</p>
-          </article>
-          <article class="card">
-            <h3>Digital Branding</h3>
-            <p>Portfolio sites, brand identity, and design systems to help businesses stand out.</p>
-          </article>
+    <!-- ABOUT -->
+    <section id="about" class="container mx-auto px-6 lg:px-12 py-12">
+      <div class="max-w-4xl mx-auto text-center reveal">
+        <h2 class="text-2xl font-bold">About me</h2>
+        <p class="mt-4 text-slate-600">I’m a web developer focused on building performant, accessible, and SEO-friendly websites. My process blends design thinking, clean code, and measurable goals so your project actually moves the needle.</p>
+
+        <div class="mt-8 grid sm:grid-cols-3 gap-4">
+          <div class="p-4 border rounded-lg">
+            <div class="text-3xl font-extrabold">3+</div>
+            <div class="text-sm text-slate-500">Years building websites</div>
+          </div>
+          <div class="p-4 border rounded-lg">
+            <div class="text-3xl font-extrabold">30+</div>
+            <div class="text-sm text-slate-500">Projects shipped</div>
+          </div>
+          <div class="p-4 border rounded-lg">
+            <div class="text-3xl font-extrabold">Local & Remote</div>
+            <div class="text-sm text-slate-500">Clients worldwide</div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="portfolio" class="section section-dark">
-      <div class="container">
-        <h2>Portfolio</h2>
-        <p class="muted">Selected projects and demos.</p>
-        <div class="grid portfolio-grid">
+    <!-- WORK / PORTFOLIO -->
+    <section id="work" class="container mx-auto px-6 lg:px-12 py-12">
+      <div class="flex items-center justify-between mb-6">
+        <h3 class="text-xl font-semibold">Selected work</h3>
+        <a href="#" class="text-sm hover:text-primary">View all projects</a>
+      </div>
 
-          <figure class="portfolio-item">
-            <img loading="lazy" src="/assets/images/portfolio-1.svg" alt="Portfolio 1" />
-            <figcaption>
-              <h4>Project 1</h4>
-              <p>Demo project showcasing UI and performance.</p>
-            </figcaption>
-          </figure>
-    
-          <figure class="portfolio-item">
-            <img loading="lazy" src="/assets/images/portfolio-2.svg" alt="Portfolio 2" />
-            <figcaption>
-              <h4>Project 2</h4>
-              <p>Demo project showcasing UI and performance.</p>
-            </figcaption>
-          </figure>
-    
-          <figure class="portfolio-item">
-            <img loading="lazy" src="/assets/images/portfolio-3.svg" alt="Portfolio 3" />
-            <figcaption>
-              <h4>Project 3</h4>
-              <p>Demo project showcasing UI and performance.</p>
-            </figcaption>
-          </figure>
-    
-          <figure class="portfolio-item">
-            <img loading="lazy" src="/assets/images/portfolio-4.svg" alt="Portfolio 4" />
-            <figcaption>
-              <h4>Project 4</h4>
-              <p>Demo project showcasing UI and performance.</p>
-            </figcaption>
-          </figure>
-    
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Project Card 1 -->
+        <article class="rounded-xl overflow-hidden border hover:shadow-lg transition-shadow bg-white">
+          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="project 1" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h4 class="font-semibold">E-commerce Refresh</h4>
+            <p class="text-sm text-slate-500 mt-1">Design + Development — improved conversion rate.</p>
+            <div class="mt-3 flex items-center justify-between">
+              <a href="#" class="text-sm text-primary">Case study</a>
+              <span class="text-xs text-slate-400">React, Tailwind</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project Card 2 -->
+        <article class="rounded-xl overflow-hidden border hover:shadow-lg transition-shadow bg-white">
+          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="project 2" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h4 class="font-semibold">SaaS Landing</h4>
+            <p class="text-sm text-slate-500 mt-1">Landing optimization — faster load & better copy.</p>
+            <div class="mt-3 flex items-center justify-between">
+              <a href="#" class="text-sm text-primary">Case study</a>
+              <span class="text-xs text-slate-400">Next.js</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project Card 3 -->
+        <article class="rounded-xl overflow-hidden border hover:shadow-lg transition-shadow bg-white">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="project 3" class="w-full h-48 object-cover" />
+          <div class="p-4">
+            <h4 class="font-semibold">Local Business Site</h4>
+            <p class="text-sm text-slate-500 mt-1">SEO-first site for local clients — doubled organic leads.</p>
+            <div class="mt-3 flex items-center justify-between">
+              <a href="#" class="text-sm text-primary">Case study</a>
+              <span class="text-xs text-slate-400">HTML & Tailwind</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="container mx-auto px-6 lg:px-12 py-12 bg-slate-50">
+      <div class="max-w-3xl mx-auto text-center">
+        <h3 class="text-xl font-semibold">What clients say</h3>
+        <div class="mt-6 space-y-6">
+          <blockquote class="bg-white p-6 rounded-lg shadow-sm border">
+            <p class="text-slate-700">"Mehdi rebuilt our website and we saw a clear lift in leads within 2 months. Super professional and quick."</p>
+            <footer class="mt-4 text-sm text-slate-500">— Client Name, CEO @ Company</footer>
+          </blockquote>
+
+          <blockquote class="bg-white p-6 rounded-lg shadow-sm border">
+            <p class="text-slate-700">"Great communication, on-time delivery, and the final product looked fantastic."</p>
+            <footer class="mt-4 text-sm text-slate-500">— Another Client, Founder</footer>
+          </blockquote>
         </div>
       </div>
     </section>
 
-    <section id="about" class="section">
-      <div class="container">
-        <h2>About</h2>
-        <p class="muted">ProbSolv by Mehdi Hassan — I help local businesses and solopreneurs build professional web presence and digital products.</p>
-        <div class="two-col">
+    <!-- CONTACT CTA -->
+    <section id="contact" class="container mx-auto px-6 lg:px-12 py-12">
+      <div class="max-w-3xl mx-auto text-center reveal">
+        <h3 class="text-2xl font-semibold">Let’s build something great</h3>
+        <p class="mt-3 text-slate-600">If you need a fast, reliable website that actually converts — let’s talk. I help startups and local businesses get measurable results.</p>
+
+        <div class="mt-6 flex flex-col sm:flex-row gap-4 items-center justify-center">
+          <a href="mailto:hello@mehdihassan.com" class="inline-block rounded-md bg-primary text-white px-6 py-3">Email me</a>
+          <a href="#" class="inline-block rounded-md border border-slate-200 px-6 py-3">Book a call</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-slate-100 py-8">
+      <div class="container mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-semibold">MH</div>
           <div>
-            <h3>Why ProbSolv?</h3>
-            <p>I combine clean design, performance-first development, and practical SEO to deliver sites that convert and perform.</p>
-          </div>
-          <div>
-            <h3>Unique — AI-enabled Assistance</h3>
-            <p>Includes an AI-friendly content structure and search support so AI engines and search assistants can better discover and summarize your services.</p>
+            <div class="font-semibold">Mehdi Hassan</div>
+            <div class="text-sm text-slate-500">Web Developer — mehdi@mehdihassan.com</div>
           </div>
         </div>
+        <div class="text-sm text-slate-500">© <span id="year"></span> Mehdi Hassan. All rights reserved.</div>
       </div>
-    </section>
-
-    <section id="testimonials" class="section section-dark">
-      <div class="container">
-        <h2>Testimonials</h2>
-        <div class="grid testimonials-grid">
-          <blockquote class="quote">"Mehdi delivered a fast and modern website for our shop — highly recommended."</blockquote>
-          <blockquote class="quote">"Great communication and fast turnaround. Our traffic increased after launch."</blockquote>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="section">
-      <div class="container">
-        <h2>Contact</h2>
-        <p class="muted">Ready to start a project? Message on WhatsApp or use the form.</p>
-        <div class="contact-grid">
-          <form id="contact-form" class="contact-form" action="#" method="post" onsubmit="return false;">
-            <label>Name<input type="text" name="name" required></label>
-            <label>Email<input type="email" name="email" required></label>
-            <label>Message<textarea name="message" rows="4" required></textarea></label>
-            <button class="btn primary" type="submit">Send</button>
-          </form>
-          <div class="contact-info">
-            <h3>Quick contact</h3>
-            <p>WhatsApp: <a href="https://wa.me/923272583013" target="_blank" rel="noopener">+92 327 2583013</a></p>
-            <p>Email: <a href="mailto:mehdihassan@example.com">mehdihassan@example.com</a></p>
-            <p>Location: Sukkur, Sindh, Pakistan</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
+    </footer>
   </main>
 
-  <footer class="site-footer section-dark">
-    <div class="container">
-      <div class="footer-grid">
-        <div>© 2025 ProbSolv — Mehdi Hassan</div>
-        <div>Built for speed • SEO-ready • Vercel friendly</div>
-      </div>
-    </div>
-  </footer>
+  <!-- Minimal JS -->
+  <script>
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-<script src="/assets/js/main.js"></script>
+    // mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobilePanel = document.getElementById('mobilePanel');
+    const menuOpen = document.getElementById('menuOpen');
+    const menuClose = document.getElementById('menuClose');
+
+    menuBtn.addEventListener('click', () => {
+      mobilePanel.classList.toggle('hidden');
+      menuOpen.classList.toggle('hidden');
+      menuClose.classList.toggle('hidden');
+    });
+
+    // reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('show');
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', function(e){
+        const href = this.getAttribute('href');
+        if (href.length > 1) {
+          e.preventDefault();
+          document.querySelector(href).scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      })
+    });
+  </script>
 </body>
 </html>
+
