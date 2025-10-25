@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About — Mehdi Hassan | Web Developer</title>
-  <meta name="description" content="Learn about Mehdi Hassan — Web developer helping startups and local businesses with clean, modern, and SEO-optimized websites." />
+  <title>Mehdi Hassan — Web Developer</title>
+  <meta name="description" content="Mehdi Hassan — Web developer helping startups & local businesses scale with high-converting websites, clean UI, and SEO." />
   <meta name="theme-color" content="#0ea5a4" />
   <link rel="icon" href="/favicon.ico" />
 
@@ -32,10 +32,13 @@
       overflow-x: hidden;
     }
 
+    /* Custom Cursor */
     .cursor-dot {
       position: fixed;
-      top: 0; left: 0;
-      width: 14px; height: 14px;
+      top: 0;
+      left: 0;
+      width: 14px;
+      height: 14px;
       border-radius: 50%;
       background: red;
       pointer-events: none;
@@ -44,25 +47,59 @@
       mix-blend-mode: difference;
       transition: transform 0.15s ease-out, width 0.2s, height 0.2s;
     }
-    .cursor-hover { width: 40px; height: 40px; background: rgba(255,0,0,0.2); }
+    .cursor-hover {
+      width: 40px;
+      height: 40px;
+      background: rgba(255,0,0,0.2);
+    }
 
-    .glass { background: rgba(255,255,255,0.8); backdrop-filter: blur(8px); }
-    .btn-accent { background: linear-gradient(90deg,#0ea5a4,#7c3aed); color:white; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .btn-accent:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(124,58,237,0.4); }
+    /* Glass effect now soft white */
+    .glass {
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(8px);
+    }
 
-    .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; background-color:#fff; border:1px solid #e5e7eb; }
-    .card-hover:hover { transform: translateY(-5px) scale(1.03); box-shadow:0 15px 25px rgba(124,58,237,0.2); }
+    .btn-accent {
+      background: linear-gradient(90deg,#0ea5a4,#7c3aed);
+      color: white;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+    .btn-accent:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(124,58,237,0.4);
+    }
 
-    .img-tilt { transition: transform 0.4s ease, filter 0.3s; }
-    .img-tilt:hover { transform: scale(1.05) rotate3d(1,1,0,5deg); filter: brightness(1.1); }
+    /* Cards */
+    .card-hover {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background-color: #fff;
+      border: 1px solid #e5e7eb;
+    }
+    .card-hover:hover {
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 15px 25px rgba(124,58,237,0.2);
+    }
 
-    .fade-in-up { opacity:0; transform: translateY(30px); }
-    .slide-reveal { opacity:0; transform: translateX(-60px); }
+    /* Image Hover Tilt */
+    .img-tilt {
+      transition: transform 0.4s ease, filter 0.3s;
+    }
+    .img-tilt:hover {
+      transform: scale(1.05) rotate3d(1, 1, 0, 5deg);
+      filter: brightness(1.1);
+    }
 
-    a { color: inherit; } a:hover { color: #0ea5a4; }
-    p.text-gray-600, .text-gray-500 { color: #4b5563 !important; }
+    /* Fade + slide */
+    .fade-in-up { opacity: 0; transform: translateY(30px); }
+    .slide-reveal { opacity: 0; transform: translateX(-60px); }
+
+    /* Light theme tweaks */
+    a { color: inherit; }
+    a:hover { color: #0ea5a4; }
+    p.text-slate-300, .text-slate-400, .text-slate-500 { color: #4b5563 !important; }
   </style>
 </head>
+
 <body class="antialiased leading-relaxed">
 
   <!-- Cursor -->
@@ -76,6 +113,7 @@
           <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-semibold">MH</div>
           <span class="font-semibold">Mehdi Hassan</span>
         </a>
+
         <div class="hidden md:flex items-center gap-6">
           <a href="index.html" class="hover:text-primary">Home</a>
           <a href="about.html" class="hover:text-primary">About</a>
@@ -84,6 +122,8 @@
           <a href="contact.html" class="hover:text-primary">Contact</a>
           <a href="contact.html" class="ml-2 inline-block rounded-md text-white px-4 py-2 text-sm font-medium btn-accent">Hire me</a>
         </div>
+
+        <!-- Mobile -->
         <div class="md:hidden flex items-center">
           <button id="menuBtn" aria-label="Toggle menu" class="p-2 rounded-md focus:outline-none">
             <svg id="menuOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -92,6 +132,8 @@
         </div>
       </nav>
     </div>
+
+    <!-- Mobile Panel -->
     <div id="mobilePanel" class="md:hidden hidden border-t border-gray-200 bg-white/90 backdrop-blur">
       <div class="px-6 py-4 flex flex-col gap-3">
         <a href="index.html" class="py-2">Home</a>
