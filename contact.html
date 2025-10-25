@@ -90,19 +90,54 @@
         </div>
       </div>
     </section>
+
+        <!-- NEWSLETTER -->
+    <section class="bg-gray-900 py-16 fade-in-up">
+      <div class="container mx-auto px-6 lg:px-12 text-center">
+        <h2 class="text-2xl font-bold mb-4 text-white">Subscribe to Our Newsletter</h2>
+        <p class="text-gray-300 mb-6 max-w-xl mx-auto">Get updates on new projects, tips, and exclusive offers directly to your inbox.</p>
+        <form id="newsletterForm" class="flex flex-col sm:flex-row justify-center gap-4 max-w-lg mx-auto">
+          <input type="email" name="email" placeholder="Enter your email" required class="px-4 py-3 rounded-md w-full sm:w-auto flex-1 border border-gray-600 bg-gray-800 text-white placeholder-gray-400" />
+          <button type="submit" class="btn-accent px-6 py-3 rounded-md">Subscribe</button>
+        </form>
+        <p id="newsletterMsg" class="mt-4 text-green-400 hidden">Thank you for subscribing!</p>
+      </div>
+    </section>
   </main>
 
-  <!-- FOOTER -->
-  <footer class="border-t border-white/5 py-8 mt-12">
-    <div class="container mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-3">
-        <div class="w-9 h-9 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-semibold">MH</div>
-        <div>
-          <div class="font-semibold">Mehdi Hassan</div>
-          <div class="text-sm text-slate-400">Web Developer — mehdi@mehdihassan.com</div>
+ <!-- FOOTER -->
+  <footer class="relative bg-gray-900 overflow-hidden border-t border-gray-700 mt-16">
+    <div class="container mx-auto px-6 lg:px-12 py-12 grid md:grid-cols-3 gap-8 text-white">
+      <div>
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center font-semibold">MH</div>
+          <span class="font-semibold">Mehdi Hassan</span>
         </div>
+        <p class="text-gray-400 text-sm">Web Developer helping startups & local businesses scale with high-converting, fast, and SEO-ready websites.</p>
       </div>
-      <div class="text-sm text-slate-400">© <span id="year"></span> Mehdi Hassan. All rights reserved.</div>
+      <div>
+        <h4 class="font-semibold mb-3">Explore</h4>
+        <ul class="space-y-2 text-gray-400 text-sm">
+          <li><a href="index.html" class="hover:text-primary transition">Home</a></li>
+          <li><a href="about.html" class="hover:text-primary transition">About</a></li>
+          <li><a href="portfolio.html" class="hover:text-primary transition">Portfolio</a></li>
+          <li><a href="testimonials.html" class="hover:text-primary transition">Testimonials</a></li>
+          <li><a href="contact.html" class="hover:text-primary transition">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Connect</h4>
+        <div class="flex gap-5 text-lg mb-3">
+          <a href="#" class="hover:text-primary"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="hover:text-primary"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="hover:text-primary"><i class="fab fa-linkedin"></i></a>
+          <a href="#" class="hover:text-primary"><i class="fab fa-tiktok"></i></a>
+        </div>
+        <p class="text-gray-500 text-sm">📩 mehdi@probsolv.online</p>
+      </div>
+    </div>
+    <div class="border-t border-gray-700 py-5 text-center text-gray-500 text-sm">
+      © <span id="year"></span> Developed by Mehdi Hassan. All rights reserved.
     </div>
   </footer>
 
