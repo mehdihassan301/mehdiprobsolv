@@ -27,8 +27,8 @@
     html, body { height: 100%; cursor: none; }
     body {
       opacity: 0;
-      background: linear-gradient(180deg,#0f1724 0%,#0b1220 100%);
-      color: rgba(241,245,249,0.95);
+      background: #ffffff;
+      color: #111827;
       overflow-x: hidden;
     }
 
@@ -53,26 +53,31 @@
       background: rgba(255,0,0,0.2);
     }
 
+    /* Glass effect now soft white */
     .glass {
-      background: rgba(255,255,255,0.03);
-      backdrop-filter: blur(6px);
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(8px);
     }
+
     .btn-accent {
       background: linear-gradient(90deg,#0ea5a4,#7c3aed);
+      color: white;
       transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     }
     .btn-accent:hover {
       transform: scale(1.05);
-      box-shadow: 0 10px 20px rgba(124,58,237,0.5);
+      box-shadow: 0 10px 20px rgba(124,58,237,0.4);
     }
 
-    /* Card Hover */
+    /* Cards */
     .card-hover {
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background-color: #fff;
+      border: 1px solid #e5e7eb;
     }
     .card-hover:hover {
       transform: translateY(-5px) scale(1.03);
-      box-shadow: 0 15px 25px rgba(124,58,237,0.4);
+      box-shadow: 0 15px 25px rgba(124,58,237,0.2);
     }
 
     /* Image Hover Tilt */
@@ -81,20 +86,17 @@
     }
     .img-tilt:hover {
       transform: scale(1.05) rotate3d(1, 1, 0, 5deg);
-      filter: brightness(1.15);
+      filter: brightness(1.1);
     }
 
-    /* Section Fade-In */
-    .fade-in-up {
-      opacity: 0;
-      transform: translateY(30px);
-    }
+    /* Fade + slide */
+    .fade-in-up { opacity: 0; transform: translateY(30px); }
+    .slide-reveal { opacity: 0; transform: translateX(-60px); }
 
-    /* Testimonials slide reveal */
-    .slide-reveal {
-      opacity: 0;
-      transform: translateX(-60px);
-    }
+    /* Light theme tweaks */
+    a { color: inherit; }
+    a:hover { color: #0ea5a4; }
+    p.text-slate-300, .text-slate-400, .text-slate-500 { color: #4b5563 !important; }
   </style>
 </head>
 
@@ -104,7 +106,7 @@
   <div class="cursor-dot" id="cursor"></div>
 
   <!-- NAV -->
-  <header class="fixed w-full z-50 glass border-b border-white/5">
+  <header class="fixed w-full z-50 bg-white/90 backdrop-blur border-b border-gray-200">
     <div class="container mx-auto px-6 lg:px-12">
       <nav class="flex items-center justify-between h-16">
         <a href="index.html" class="flex items-center gap-3">
@@ -124,16 +126,16 @@
         <!-- Mobile -->
         <div class="md:hidden flex items-center">
           <button id="menuBtn" aria-label="Toggle menu" class="p-2 rounded-md focus:outline-none">
-            <svg id="menuOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-            <svg id="menuClose" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            <svg id="menuOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            <svg id="menuClose" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
           </button>
         </div>
       </nav>
     </div>
 
     <!-- Mobile Panel -->
-    <div id="mobilePanel" class="md:hidden hidden border-t border-white/5">
-      <div class="px-6 py-4 flex flex-col gap-3 glass">
+    <div id="mobilePanel" class="md:hidden hidden border-t border-gray-200 bg-white/90 backdrop-blur">
+      <div class="px-6 py-4 flex flex-col gap-3">
         <a href="index.html" class="py-2">Home</a>
         <a href="about.html" class="py-2">About</a>
         <a href="portfolio.html" class="py-2">Portfolio</a>
@@ -151,98 +153,83 @@
         <div class="space-y-6 fade-in-up">
           <p class="text-sm font-medium text-primary">Hey, I’m Mehdi — Web Developer</p>
           <h1 class="text-4xl lg:text-5xl font-extrabold leading-tight">I build high-converting websites for startups & local businesses.</h1>
-          <p class="text-slate-300 max-w-xl">I focus on fast performance, clean UI,UX, and SEO-first development so your site ranks and converts.</p>
+          <p class="text-gray-600 max-w-xl">I focus on fast performance, clean UI/UX, and SEO-first development so your site ranks and converts.</p>
           <div class="flex items-center gap-4">
             <a href="contact.html" class="inline-block rounded-md text-white px-6 py-3 font-medium btn-accent">Work with me</a>
-            <a href="portfolio.html" class="inline-block rounded-md border border-white/10 px-5 py-3 text-sm">See portfolio</a>
+            <a href="portfolio.html" class="inline-block rounded-md border border-gray-300 px-5 py-3 text-sm">See portfolio</a>
           </div>
         </div>
         <div class="relative fade-in-up">
-          <div class="rounded-2xl border border-white/5 p-6 shadow-lg glass">
+          <div class="rounded-2xl border border-gray-200 p-6 shadow-lg bg-white">
             <img src="mehdi.png" alt="project mockup" class="w-full rounded-lg object-cover h-72 md:h-96 img-tilt" />
           </div>
-          <div class="absolute -bottom-6 left-6 glass rounded-xl p-4 shadow-md border border-white/5 w-64">
-            <div class="text-xs text-slate-300">MEHDI HASSAN</div>
-            <div class="text-sm text-slate-400 mt-1">Developer,Designer, & On page SEO Specialist</div>
+          <div class="absolute -bottom-6 left-6 bg-white border border-gray-200 rounded-xl p-4 shadow-md w-64">
+            <div class="text-xs text-gray-500">MEHDI HASSAN</div>
+            <div class="text-sm text-gray-600 mt-1">Developer, Designer, & On-page SEO Specialist</div>
           </div>
         </div>
       </div>
     </section>
 
-<!-- ABOUT -->
-<section class="container mx-auto px-6 lg:px-12 py-12">
-  <div class="max-w-4xl mx-auto text-center fade-in-up">
-    <h2 class="text-2xl font-bold">What I do</h2>
-    <p class="mt-4 text-slate-300">
-      Transforming ideas into engaging, high-performing websites that attract, convert, and grow your audience.
-    </p>
-
-    <div class="mt-8 grid sm:grid-cols-3 gap-4">
-      <!-- Counter 1 -->
-      <div class="p-4 glass border rounded-lg card-hover fade-in-up">
-        <div class="text-3xl font-extrabold">
-          <span class="counter" data-target="24">0</span>+
+    <!-- ABOUT -->
+    <section class="container mx-auto px-6 lg:px-12 py-12 bg-white">
+      <div class="max-w-4xl mx-auto text-center fade-in-up">
+        <h2 class="text-2xl font-bold">What I do</h2>
+        <p class="mt-4 text-gray-600">Transforming ideas into engaging, high-performing websites that attract, convert, and grow your audience.</p>
+        <div class="mt-8 grid sm:grid-cols-3 gap-4">
+          <div class="p-4 rounded-lg border bg-white card-hover fade-in-up">
+            <div class="text-3xl font-extrabold"><span class="counter" data-target="24">0</span>+</div>
+            <div class="text-sm text-gray-600">Months building Websites</div>
+          </div>
+          <div class="p-4 rounded-lg border bg-white card-hover fade-in-up">
+            <div class="text-3xl font-extrabold"><span class="counter" data-target="40">0</span>+</div>
+            <div class="text-sm text-gray-600">Projects shipped</div>
+          </div>
+          <div class="p-4 rounded-lg border bg-white card-hover fade-in-up">
+            <div class="text-3xl font-extrabold">Local & Remote</div>
+            <div class="text-sm text-gray-600">Clients worldwide</div>
+          </div>
         </div>
-        <div class="text-sm text-slate-400">Months building Websites</div>
       </div>
+    </section>
 
-      <!-- Counter 2 -->
-      <div class="p-4 glass border rounded-lg card-hover fade-in-up">
-        <div class="text-3xl font-extrabold">
-          <span class="counter" data-target="40">0</span>+
-        </div>
-        <div class="text-sm text-slate-400">Projects shipped</div>
-      </div>
-
-      <!-- Counter 3 -->
-      <div class="p-4 glass border rounded-lg card-hover fade-in-up">
-        <div class="text-3xl font-extrabold">
-          <span class="counter-text">Local & Remote</span>
-        </div>
-        <div class="text-sm text-slate-400">Clients worldwide</div>
-      </div>
-    </div>
-  </div>
-</section>
-    
     <!-- WORK -->
-    <section id="work" class="container mx-auto px-6 lg:px-12 py-12">
+    <section id="work" class="container mx-auto px-6 lg:px-12 py-12 bg-white">
       <div class="flex items-center justify-between mb-6 fade-in-up">
         <h3 class="text-xl font-semibold">Selected work</h3>
         <a href="portfolio.html" class="text-sm hover:text-primary">View all projects</a>
       </div>
-
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <article class="rounded-xl overflow-hidden border bg-white/3 card-hover fade-in-up">
-          <img src="Ecommercerefresh.jpg/400x200" alt=@ecommerce store redesign, redesign website" class="w-full h-48 object-cover img-tilt" />
+        <article class="rounded-xl overflow-hidden border bg-white card-hover fade-in-up">
+          <img src="Ecommercerefresh.jpg" alt="E-commerce redesign" class="w-full h-48 object-cover img-tilt" />
           <div class="p-4">
             <h4 class="font-semibold">E-commerce Refresh</h4>
-            <p class="text-sm text-slate-300 mt-1">Design + Development — improved conversion rate.</p>
+            <p class="text-sm text-gray-600 mt-1">Design + Development — improved conversion rate.</p>
           </div>
         </article>
-        <article class="rounded-xl overflow-hidden border bg-white/3 card-hover fade-in-up">
-          <img src="saaslandingpage.jpg/400x200" alt="saaslanding page, page business, startup landing page" class="w-full h-48 object-cover img-tilt" />
+        <article class="rounded-xl overflow-hidden border bg-white card-hover fade-in-up">
+          <img src="saaslandingpage.jpg" alt="SaaS landing page" class="w-full h-48 object-cover img-tilt" />
           <div class="p-4">
             <h4 class="font-semibold">SaaS Landing</h4>
-            <p class="text-sm text-slate-300 mt-1">Landing optimization — faster load & better copy.</p>
+            <p class="text-sm text-gray-600 mt-1">Landing optimization — faster load & better copy.</p>
           </div>
         </article>
-        <article class="rounded-xl overflow-hidden border bg-white/3 card-hover fade-in-up">
-          <img src="localbusinesssite.jpg/400x200" alt="localbusiness.jpg" class="w-full h-48 object-cover img-tilt" />
+        <article class="rounded-xl overflow-hidden border bg-white card-hover fade-in-up">
+          <img src="localbusinesssite.jpg" alt="Local business site" class="w-full h-48 object-cover img-tilt" />
           <div class="p-4">
             <h4 class="font-semibold">Local Business Site</h4>
-            <p class="text-sm text-slate-300 mt-1">SEO-first site for local clients — doubled organic leads.</p>
+            <p class="text-sm text-gray-600 mt-1">SEO-first site — doubled organic leads.</p>
           </div>
         </article>
       </div>
     </section>
 
     <!-- TESTIMONIALS -->
-    <section class="container mx-auto px-6 lg:px-12 py-16 bg-white/2 rounded-xl glass slide-reveal">
+    <section class="container mx-auto px-6 lg:px-12 py-16 bg-gray-50 rounded-xl slide-reveal">
       <div class="max-w-3xl mx-auto text-center">
         <h3 class="text-xl font-semibold mb-4">What clients say</h3>
-        <p class="text-slate-300 italic">"Mehdi rebuilt our website and we saw a clear lift in leads within 2 months. Super professional and quick."</p>
-        <p class="mt-2 text-sm text-slate-400">— Client</p>
+        <p class="text-gray-600 italic">"Mehdi rebuilt our website and we saw a clear lift in leads within 2 months. Super professional and quick."</p>
+        <p class="mt-2 text-sm text-gray-500">— Client</p>
         <div class="mt-6">
           <a href="testimonials.html" class="inline-block rounded-md text-white px-5 py-2 btn-accent">Read more</a>
         </div>
@@ -250,58 +237,21 @@
     </section>
 
     <!-- CONTACT CTA -->
-    <section id="contact" class="container mx-auto px-6 lg:px-12 py-16 fade-in-up">
+    <section id="contact" class="container mx-auto px-6 lg:px-12 py-16 fade-in-up bg-white">
       <div class="max-w-3xl mx-auto text-center">
         <h3 class="text-2xl font-semibold">Let’s build something great</h3>
-        <p class="mt-3 text-slate-300">If you need a fast, reliable website that actually converts — let’s talk.</p>
+        <p class="mt-3 text-gray-600">If you need a fast, reliable website that actually converts — let’s talk.</p>
         <div class="mt-6 flex flex-col sm:flex-row gap-4 items-center justify-center">
           <a href="contact.html" class="inline-block rounded-md text-white px-6 py-3 font-medium btn-accent">Email me</a>
-          <a href="contact.html" class="inline-block rounded-md border border-white/10 px-6 py-3">Book a call</a>
+          <a href="contact.html" class="inline-block rounded-md border border-gray-300 px-6 py-3">Book a call</a>
         </div>
       </div>
     </section>
   </main>
 
-<!-- FOOTER -->
-<footer class="relative bg-gradient-to-b from-[#0f1724] to-[#0b1220] overflow-hidden border-t border-white/10 mt-16">
-  <div class="absolute inset-0 bg-grid bg-[size:22px_22px] opacity-5"></div>
-  <div class="relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 py-12 grid md:grid-cols-4 gap-8">
-    <!-- Brand -->
-    <div>
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-semibold">MH</div>
-        <span class="font-semibold text-white">Mehdi Hassan</span>
-      </div>
-      <p class="mt-3 text-white/60 text-sm leading-relaxed">
-        Web Developer helping startups & local businesses scale with high-converting, fast, and SEO-ready websites.
-      </p>
-    </div>
-
-    <!-- Explore -->
-    <div>
-      <h4 class="font-semibold mb-3 text-white">Explore</h4>
-      <ul class="space-y-2 text-white/70 text-sm">
-        <li><a href="index.html" class="hover:text-primary transition">Home</a></li>
-        <li><a href="about.html" class="hover:text-primary transition">About</a></li>
-        <li><a href="portfolio.html" class="hover:text-primary transition">Portfolio</a></li>
-        <li><a href="testimonials.html" class="hover:text-primary transition">Testimonials</a></li>
-        <li><a href="contact.html" class="hover:text-primary transition">Contact</a></li>
-      </ul>
-    </div>
-
-    <!-- Services -->
-    <div>
-      <h4 class="font-semibold mb-3 text-white">Services</h4>
-      <ul class="space-y-2 text-white/70 text-sm">
-        <li><a href="web-development.html" class="hover:text-primary transition">Web Development</a></li>
-        <li><a href="seo.html" class="hover:text-primary transition">On-Page SEO</a></li>
-        <li><a href="uiux.html" class="hover:text-primary transition">UI/UX Design</a></li>
-        <li><a href="consultation.html" class="hover:text-primary transition">Consultation</a></li>
-      </ul>
-    </div>
-
     <!-- Connect -->
     <div>
+       <footer class="relative bg-gradient-to-b from-[#0f1724] to-[#0b1220] overflow-hidden border-t border-white/10 mt-16">
       <h4 class="font-semibold mb-3 text-white">Connect</h4>
       <div class="flex gap-5 text-white/70 text-lg">
         <a href="https://www.facebook.com/profile.php?id=61567271347491" target="_blank" aria-label="Facebook" class="hover:text-primary transition">
