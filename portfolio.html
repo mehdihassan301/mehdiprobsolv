@@ -93,9 +93,9 @@
 
   <!-- Overlay content -->
   <div class="relative z-10 text-center px-6">
-    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-white">My Portfolio</h1>
+    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-white">Our Portfolio</h1>
     <p class="text-gray-200 sm:text-lg max-w-2xl mx-auto">
-      A showcase of projects that highlight my skills in web development, UI/UX design, and SEO-first approaches. Each project is crafted with performance and conversions in mind.
+      A showcase of projects that highlight our skills in web development, UI/UX design, and SEO-first approaches. Each project is crafted with performance and conversions in mind.
     </p>
   </div>
 </section>
@@ -109,21 +109,21 @@
       <div class="w-full h-32 flex items-center justify-center">
         <img src="yourimage1.jpg" alt="SaaS Landing" class="w-full h-full object-contain"/>
       </div>
-      <h3 class="font-medium text-gray-800 mt-2">SaaS Landing</h3>
+      <h3 class="font-medium text-gray-800 mt-2">Landing page</h3>
     </div>
 
     <div class="card-hover rounded-lg overflow-hidden bg-white/80 hover:bg-white/95 fade-in-up p-2 text-center">
       <div class="w-full h-32 flex items-center justify-center">
         <img src="yourimage2.jpg" alt="E-commerce Site" class="w-full h-full object-contain"/>
       </div>
-      <h3 class="font-medium text-gray-800 mt-2">E-commerce Site</h3>
+      <h3 class="font-medium text-gray-800 mt-2">Redesigned site</h3>
     </div>
 
     <div class="card-hover rounded-lg overflow-hidden bg-white/80 hover:bg-white/95 fade-in-up p-2 text-center">
       <div class="w-full h-32 flex items-center justify-center">
         <img src="yourimage3.jpg" alt="Local Business" class="w-full h-full object-contain"/>
       </div>
-      <h3 class="font-medium text-gray-800 mt-2">Local Business</h3>
+      <h3 class="font-medium text-gray-800 mt-2">Baker site</h3>
     </div>
 
     <div class="card-hover rounded-lg overflow-hidden bg-white/80 hover:bg-white/95 fade-in-up p-2 text-center">
@@ -137,14 +137,14 @@
       <div class="w-full h-32 flex items-center justify-center">
         <img src="yourimage5.jpg" alt="Startup Dashboard" class="w-full h-full object-contain"/>
       </div>
-      <h3 class="font-medium text-gray-800 mt-2">Startup Dashboard</h3>
+      <h3 class="font-medium text-gray-800 mt-2">Booking page </h3>
     </div>
 
     <div class="card-hover rounded-lg overflow-hidden bg-white/80 hover:bg-white/95 fade-in-up p-2 text-center">
       <div class="w-full h-32 flex items-center justify-center">
         <img src="yourimage6.jpg" alt="Agency Collab" class="w-full h-full object-contain"/>
       </div>
-      <h3 class="font-medium text-gray-800 mt-2">Agency Collab</h3>
+      <h3 class="font-medium text-gray-800 mt-2">Digital Product</h3>
     </div>
 
     <div class="card-hover rounded-lg overflow-hidden bg-white/80 hover:bg-white/95 fade-in-up p-2 text-center">
@@ -189,50 +189,80 @@
 
   </main>
 
-  <!-- Footer (same as homepage) -->
-  <footer class="relative bg-gradient-to-b from-[#0f1724] to-[#0b1220] overflow-hidden border-t border-white/10 mt-16">
-    <div class="container mx-auto px-6 lg:px-12 py-12 grid md:grid-cols-4 gap-8 text-white">
-      <div>
-        <div class="flex items-center gap-3 mb-3">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-semibold">MH</div>
-          <span class="font-semibold">Mehdi Hassan</span>
+ <!-- FOOTER -->
+<footer class="relative bg-gradient-to-b from-[#0f1724] to-[#0b1220] overflow-hidden border-t border-white/10 mt-16">
+  <div class="absolute inset-0 bg-grid bg-[size:22px_22px] opacity-5"></div>
+  <div class="relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 py-12 grid md:grid-cols-4 gap-8">
+
+    <!-- Brand -->
+    <div>
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-semibold">MH</div>
+        <span class="font-semibold text-white">Mehdi Hassan</span>
+      </div>
+      <p class="mt-3 text-white/60 text-sm leading-relaxed">
+        Web Developer helping startups & local businesses scale with high-converting, fast, and SEO-ready websites.
+      </p>
+
+      <!-- Newsletter -->
+      <form
+        action="https://formspree.io/f/YOUR_FORM_ID"
+        method="POST"
+        class="mt-5 space-y-3"
+      >
+        <label for="email" class="text-white/70 text-sm block">Subscribe to our newsletter</label>
+        <div class="flex items-center bg-white/10 rounded-lg overflow-hidden">
+          <input
+            type="email"
+            name="email"
+            id="email"
+            required
+            placeholder="Enter your email"
+            class="w-full px-3 py-2 bg-transparent text-white text-sm focus:outline-none placeholder-white/40"
+          />
+          <button
+            type="submit"
+            class="bg-primary hover:bg-accent text-white px-4 py-2 text-sm font-medium transition"
+          >
+            Subscribe
+          </button>
         </div>
-        <p class="text-white/60 text-sm">Web Developer helping startups & local businesses scale with high-converting, fast, SEO-ready websites.</p>
-      </div>
-      <div>
-        <h4 class="font-semibold mb-3">Explore</h4>
-        <ul class="space-y-2 text-white/70 text-sm">
-          <li><a href="index.html" class="hover:text-primary">Home</a></li>
-          <li><a href="about.html" class="hover:text-primary">About</a></li>
-          <li><a href="portfolio.html" class="hover:text-primary">Portfolio</a></li>
-          <li><a href="testimonials.html" class="hover:text-primary">Testimonials</a></li>
-          <li><a href="contact.html" class="hover:text-primary">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="font-semibold mb-3">Services</h4>
-        <ul class="space-y-2 text-white/70 text-sm">
-          <li><a href="web-development.html" class="hover:text-primary">Web Development</a></li>
-          <li><a href="seo.html" class="hover:text-primary">On-Page SEO</a></li>
-          <li><a href="uiux.html" class="hover:text-primary">UI/UX Design</a></li>
-          <li><a href="consultation.html" class="hover:text-primary">Consultation</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="font-semibold mb-3">Connect</h4>
-        <div class="flex gap-5 text-lg text-white/70">
-          <a href="https://www.facebook.com/" class="hover:text-primary"><i class="fab fa-facebook"></i></a>
-          <a href="https://www.instagram.com/" class="hover:text-primary"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.linkedin.com/" class="hover:text-primary"><i class="fab fa-linkedin"></i></a>
-          <a href="https://www.tiktok.com/" class="hover:text-primary"><i class="fab fa-tiktok"></i></a>
-        </div>
-        <p class="mt-4 text-sm text-white/50">📩 mehdi@mehdihassan.com</p>
-      </div>
+        <p class="text-xs text-white/40">We respect your privacy. No spam, ever.</p>
+      </form>
     </div>
-    <div class="border-t border-white/5 py-5 text-center text-white/50 text-sm">
-      © <span id="year"></span> Mehdi Hassan. All rights reserved.
+
+    <!-- Explore -->
+    <div>
+      <h4 class="font-semibold mb-3 text-white">Explore</h4>
+      <ul class="space-y-2 text-white/70 text-sm">
+        <li><a href="index.html" class="hover:text-primary transition">Home</a></li>
+        <li><a href="about.html" class="hover:text-primary transition">About</a></li>
+        <li><a href="portfolio.html" class="hover:text-primary transition">Portfolio</a></li>
+        <li><a href="testimonials.html" class="hover:text-primary transition">Testimonials</a></li>
+        <li><a href="contact.html" class="hover:text-primary transition">Contact</a></li>
+      </ul>
     </div>
-  </footer>
+
+    <!-- Services (removed as per your request) -->
+
+    <!-- Connect -->
+    <div>
+      <h4 class="font-semibold mb-3 text-white">Connect</h4>
+      <div class="flex gap-5 text-white/70 text-lg">
+        <a href="https://www.facebook.com/profile.php?id=61567271347491" target="_blank" aria-label="Facebook" class="hover:text-primary transition"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram" class="hover:text-primary transition"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn" class="hover:text-primary transition"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.tiktok.com/" target="_blank" aria-label="TikTok" class="hover:text-primary transition"><i class="fab fa-tiktok"></i></a>
+      </div>
+      <p class="mt-4 text-white/50 text-sm">📩 mehdi@mehdihassan.com</p>
+    </div>
+  </div>
+
+  <div class="border-t border-white/5 py-5 text-center text-white/50 text-sm relative">
+    © <span id="year"></span> Mehdi Hassan. All rights reserved.
+  </div>
+</footer>
+
 
   <script src="https://kit.fontawesome.com/a2e0e9b09d.js" crossorigin="anonymous"></script>
   <script>
