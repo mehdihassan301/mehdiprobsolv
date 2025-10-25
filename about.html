@@ -105,15 +105,21 @@
   <!-- Cursor -->
   <div class="cursor-dot" id="cursor"></div>
 
-  <!-- NAV -->
-  <header class="fixed w-full z-50 bg-white/90 backdrop-blur border-b border-gray-200">
-    <div class="container mx-auto px-6 lg:px-12">
-      <nav class="flex items-center justify-between h-16">
-        <a href="index.html" class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-semibold">MH</div>
-          <span class="font-semibold">Mehdi Hassan</span>
-        </a>
-
+ <!-- NAV -->
+<header class="fixed w-full z-50 bg-white/90 backdrop-blur border-b border-gray-200">
+  <div class="container mx-auto px-6 lg:px-12">
+    <nav class="flex items-center justify-between h-16">
+      <a href="index.html" class="flex items-center gap-3">
+        <!-- Replace this with your logo -->
+        <img 
+          src="assets/logo.png" 
+          alt="Mehdi Hassan Logo" 
+          class="w-10 h-10 rounded-full object-cover"
+        >
+        <span class="font-semibold text-gray-800">Mehdi Hassan</span>
+      </a>
+    </nav>
+  </div>
         <div class="hidden md:flex items-center gap-6">
           <a href="index.html" class="hover:text-primary">Home</a>
           <a href="about.html" class="hover:text-primary">About</a>
@@ -151,7 +157,7 @@
     <section class="container mx-auto px-6 lg:px-12 py-20">
       <div class="max-w-4xl mx-auto text-center fade-in-up">
         <h1 class="text-4xl lg:text-5xl font-extrabold">About Mehdi Hassan</h1>
-        <p class="mt-4 text-gray-600 text-lg">I build modern, high-converting websites and digital solutions for startups, entrepreneurs, and local businesses worldwide.</p>
+        <p class="mt-4 text-gray-600 text-lg">I build modern, high-converting websites and digital solutions for startups, entrepreneurs, and local businesses for worldwide.</p>
       </div>
     </section>
 
@@ -162,9 +168,9 @@
           <img src="mehdiworking.jpg" alt="Mehdi working" class="rounded-2xl shadow-lg img-tilt" />
         </div>
         <div class="fade-in-up space-y-4">
-          <h2 class="text-2xl font-semibold">My Journey</h2>
-          <p class="text-gray-600">I started by helping small businesses in Sindh take their first step in the digital world — achieving real outcomes for their growth.</p>
-          <p class="text-gray-600">Through constant learning and deep research into business psychology and digital trends, my vision evolved beyond coding — now I build complete digital solutions that scale.</p>
+          <h2 class="text-2xl font-semibold">Our Journey</h2>
+          <p class="text-gray-600">We started by helping small businesses in Sindh take their first step in the digital world — achieving real outcomes for their growth.</p>
+          <p class="text-gray-600">Through constant learning and deep research into business psychology and digital trends, my vision evolved beyond coding — now We build complete digital solutions that scale.</p>
         </div>
       </div>
     </section>
@@ -178,7 +184,7 @@
           <p class="text-gray-600 text-sm">HTML, CSS, Tailwind, JavaScript, TypeScript</p>
         </div>
         <div class="p-6 glass rounded-xl border shadow-sm text-center card-hover">
-          <h3 class="font-semibold mb-2">Backend Basics</h3>
+          <h3 class="font-semibold mb-2">Backend Basics-By Team</h3>
           <p class="text-gray-600 text-sm">Node.js, Express, Firebase</p>
         </div>
         <div class="p-6 glass rounded-xl border shadow-sm text-center card-hover">
@@ -190,7 +196,7 @@
           <p class="text-gray-600 text-sm">Crafting seamless, user-focused designs</p>
         </div>
         <div class="p-6 glass rounded-xl border shadow-sm text-center card-hover">
-          <h3 class="font-semibold mb-2">Business Gap Finder</h3>
+          <h3 class="font-semibold mb-2">Business Gap Finder-By Team</h3>
           <p class="text-gray-600 text-sm">Identifying gaps and delivering business solutions</p>
         </div>
         <div class="p-6 glass rounded-xl border shadow-sm text-center card-hover">
@@ -227,7 +233,7 @@
       </div>
       <p class="mt-4 text-white/60 text-sm leading-relaxed">Helping startups & local businesses scale with high-converting, fast, and SEO-ready websites.</p>
       <div class="flex gap-4 mt-6 text-white/70 text-xl">
-        <a href="https://www.facebook.com/profile.php?id=61567271347491" target="_blank" aria-label="Facebook" class="hover:text-primary transition"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.facebook.com/mehdi.hassan.607411" target="_blank" aria-label="Facebook" class="hover:text-primary transition"><i class="fab fa-facebook"></i></a>
         <a href="https://www.instagram.com/_mehdihassann" target="_blank" aria-label="Instagram" class="hover:text-primary transition"><i class="fab fa-instagram"></i></a>
         <a href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn" class="hover:text-primary transition"><i class="fab fa-linkedin"></i></a>
         <a href="https://www.tiktok.com/" target="_blank" aria-label="TikTok" class="hover:text-primary transition"><i class="fab fa-tiktok"></i></a>
@@ -259,14 +265,31 @@
       </ul>
     </div>
 
-    <!-- NEWSLETTER -->
-    <div class="md:col-span-2">
-      <h4 class="font-semibold mb-4 text-white">Subscribe to Our Newsletter</h4>
-      <p class="text-white/60 text-sm mb-4">Get the latest tips, updates, and offers directly to your inbox.</p>
-      <form class="flex flex-col sm:flex-row gap-3 mb-8">
-        <input type="email" placeholder="Enter your email" class="w-full sm:flex-1 px-4 py-3 rounded-md bg-[#1f2937] text-white placeholder-white/50 border border-white/20 focus:border-primary focus:outline-none transition" required>
-        <button type="submit" class="px-6 py-3 bg-primary text-white font-semibold rounded-md hover:bg-accent transition">Subscribe</button>
-      </form>
+   <!-- NEWSLETTER -->
+<div class="md:col-span-2">
+  <h4 class="font-semibold mb-4 text-white">Subscribe to Our Newsletter</h4>
+  <p class="text-white/60 text-sm mb-4">Get the latest tips, updates, and offers directly to your inbox.</p>
+
+  <form 
+    action="https://formspree.io/f/yourFormID" 
+    method="POST"
+    class="flex flex-col sm:flex-row gap-3 mb-8"
+  >
+    <input 
+      type="email" 
+      name="email"
+      placeholder="Enter your email"
+      class="w-full sm:flex-1 px-4 py-3 rounded-md bg-[#1f2937] text-white placeholder-white/50 border border-white/20 focus:border-primary focus:outline-none transition" 
+      required
+    >
+    <button 
+      type="submit"
+      class="px-6 py-3 bg-primary text-white font-semibold rounded-md hover:bg-accent transition"
+    >
+      Subscribe
+    </button>
+  </form>
+</div>
 
     
 
