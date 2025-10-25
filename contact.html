@@ -3,62 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  
-  <!-- ✅ SEO-Optimized Title -->
-  <title>Contact | Mehdi Hassan — Top Web Developer & UI/UX Specialist</title>
-  
-  <!-- ✅ Meta Description -->
-  <meta name="description" content="Contact Mehdi Hassan — a specialized web developer crafting SEO-optimized, high-performance websites for startups and businesses. Let’s build your next digital success." />
-  
-  <!-- ✅ Keywords -->
-  <meta name="keywords" content="Mehdi Hassan, web developer, frontend developer, web design, SEO specialist, website developer, hire web developer, contact Mehdi Hassan, UI/UX designer" />
-  
-  <!-- ✅ Canonical Tag -->
-  <link rel="canonical" href="https://probsolv.online/contact/" />
-  
-  <!-- ✅ Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://probsolv.online/contact" />
-  <meta property="og:title" content="Contact | Mehdi Hassan — Top Web Developer" />
-  <meta property="og:description" content="Get in touch with Mehdi Hassan for professional web development, SEO, and UI/UX services." />
-  <meta property="og:image" content="https://probsolv.online/assets/og-image.jpg" />
-  
-  <!-- ✅ Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:url" content="https://probsolv.online/contact" />
-  <meta name="twitter:title" content="Contact | Mehdi Hassan — Top Web Developer" />
-  <meta name="twitter:description" content="Connect with Mehdi Hassan for modern, optimized web solutions that convert." />
-  <meta name="twitter:image" content="https://probsolv.online/assets/og-image.jpg" />
-  
-  <!-- Favicon -->
-  <link rel="icon" href="favicon.ico" />
-
-  <!-- CSS & Scripts -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <!-- ✅ Schema Markup for SEO (Web Developer Info) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Mehdi Hassan",
-    "url": "https://probsolv.online",
-    "sameAs": [
-      "https://linkedin.com/in/mehdi-hassan-72924a377",
-      "https://facebook.com/mehdi.hassan.607411"
-    ],
-    "jobTitle": "Web Developer",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "ProbSolv"
-    },
-    "email": "mailto:mehdi@probsolv.online"
-  }
-  </script>
-
+  <title>Contact — Mehdi Hassan | Web Developer</title>
+  <meta name="description" content="Get in touch with Mehdi Hassan, web developer. Contact form, social links, and book a call option available." />
+  <link rel="icon" href="/favicon.ico" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -111,49 +58,28 @@
 
   <!-- MAIN CONTENT -->
   <main class="pt-24">
-<!-- Contact Form -->
-<form id="contactForm" class="flex flex-col gap-4 glass p-6 rounded-xl border" 
-      action="https://formspree.io/f/mpwozakj" method="POST">
-  <input type="text" name="name" placeholder="Your Name" class="p-3 rounded-md bg-white/5 border border-white/10 text-white" required />
-  <input type="email" name="email" placeholder="Email Address" class="p-3 rounded-md bg-white/5 border border-white/10 text-white" required />
-  <textarea name="message" rows="5" placeholder="Your Message" class="p-3 rounded-md bg-white/5 border border-white/10 text-white" required></textarea>
-  <button type="submit" class="btn-accent text-white font-medium rounded-md px-4 py-2 mt-2">Send Message</button>
-</form>
+    <section class="container mx-auto px-6 lg:px-12 py-20">
+      <h1 class="text-4xl font-bold mb-4 text-center">Get in Touch</h1>
+      <p class="text-slate-300 text-center max-w-2xl mx-auto mb-12">Have a project or idea in mind? Fill out the form or connect with me on social media. You can also book a call directly!</p>
 
-<!-- ✅ Contact Success Message -->
-<p id="contactMsg" class="mt-4 text-green-400 hidden">
-  Your message has been submitted successfully!
-</p>
-
-<!-- ✅ JS to handle the contact form -->
-<script>
-  const contactForm = document.getElementById('contactForm');
-  const contactMsg = document.getElementById('contactMsg');
-
-  contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const data = new FormData(contactForm);
-    const response = await fetch(contactForm.action, {
-      method: contactForm.method,
-      body: data,
-      headers: { 'Accept': 'application/json' }
-    });
-    if (response.ok) {
-      contactForm.reset();
-      contactMsg.classList.remove('hidden');
-    } else {
-      alert('Oops! There was a problem submitting your form.');
-    }
-  });
-</script>
+      <div class="max-w-3xl mx-auto grid md:grid-cols-2 gap-10">
+        <!-- Contact Form -->
+        <form class="flex flex-col gap-4 glass p-6 rounded-xl border" action="#" method="POST">
+          <input type="text" name="name" placeholder="Your Name" class="p-3 rounded-md bg-white/5 border border-white/10 text-white" required />
+          <input type="email" name="email" placeholder="Email Address" class="p-3 rounded-md bg-white/5 border border-white/10 text-white" required />
+          <textarea name="message" rows="5" placeholder="Your Message" class="p-3 rounded-md bg-white/5 border border-white/10 text-white" required></textarea>
+          <button type="submit" class="btn-accent text-white font-medium rounded-md px-4 py-2 mt-2">Send Message</button>
+        </form>
 
         <!-- Social / Book Call -->
         <div class="flex flex-col gap-6 text-center md:text-left items-center md:items-start justify-center">
           <div>
             <h2 class="text-2xl font-semibold mb-3">Connect with me</h2>
             <div class="flex gap-4 justify-center md:justify-start mt-2">
-              <a href="https://linkedin.com/in/mehdi-hassan-72924a377" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
-              <a href="https://facebook.com/mehdi.hassan.607411" target="_blank" class="social-icon"><i class="fab fa-facebook"></i></a>
+              <a href="https://linkedin.com/in/yourprofile" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
+              <a href="https://twitter.com/yourprofile" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+              <a href="https://github.com/yourprofile" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+              <a href="https://dribbble.com/yourprofile" target="_blank" class="social-icon"><i class="fab fa-dribbble"></i></a>
             </div>
           </div>
           <div>
@@ -165,65 +91,18 @@
       </div>
     </section>
 
- <!-- NEWSLETTER -->
-<section class="bg-gray-900 py-16 fade-in-up">
-  <div class="container mx-auto px-6 lg:px-12 text-center">
-    <h2 class="text-2xl font-bold mb-4 text-white">Subscribe to Our Newsletter</h2>
-    <p class="text-gray-300 mb-6 max-w-xl mx-auto">
-      Get updates on new projects, tips, and exclusive offers directly to your inbox.
-    </p>
-
-    <!-- ✅ Connected to Formspree -->
-    <form 
-      action="https://formspree.io/f/mpwozakj"
-      method="POST"
-      id="newsletterForm"
-      class="flex flex-col sm:flex-row justify-center gap-4 max-w-lg mx-auto"
-    >
-      <input 
-        type="email" 
-        name="email" 
-        placeholder="Enter your email" 
-        required 
-        class="px-4 py-3 rounded-md w-full sm:w-auto flex-1 border border-gray-600 bg-gray-800 text-white placeholder-gray-400"
-      />
-      <button 
-        type="submit" 
-        class="btn-accent px-6 py-3 rounded-md"
-      >
-        Subscribe
-      </button>
-    </form>
-
-    <!-- Success message -->
-    <p id="newsletterMsg" class="mt-4 text-green-400 hidden">
-      ✅ Thank you for subscribing!
-    </p>
-  </div>
-</section>
-
-<!-- Optional JS to show thank-you message without page reload -->
-<script>
-  const form = document.getElementById('newsletterForm');
-  const msg = document.getElementById('newsletterMsg');
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const data = new FormData(form);
-    const response = await fetch(form.action, {
-      method: form.method,
-      body: data,
-      headers: { 'Accept': 'application/json' }
-    });
-    if (response.ok) {
-      form.reset();
-      msg.classList.remove('hidden');
-    } else {
-      alert('Oops! There was a problem submitting your form.');
-    }
-  });
-</script>
-
+        <!-- NEWSLETTER -->
+    <section class="bg-gray-900 py-16 fade-in-up">
+      <div class="container mx-auto px-6 lg:px-12 text-center">
+        <h2 class="text-2xl font-bold mb-4 text-white">Subscribe to Our Newsletter</h2>
+        <p class="text-gray-300 mb-6 max-w-xl mx-auto">Get updates on new projects, tips, and exclusive offers directly to your inbox.</p>
+        <form id="newsletterForm" class="flex flex-col sm:flex-row justify-center gap-4 max-w-lg mx-auto">
+          <input type="email" name="email" placeholder="Enter your email" required class="px-4 py-3 rounded-md w-full sm:w-auto flex-1 border border-gray-600 bg-gray-800 text-white placeholder-gray-400" />
+          <button type="submit" class="btn-accent px-6 py-3 rounded-md">Subscribe</button>
+        </form>
+        <p id="newsletterMsg" class="mt-4 text-green-400 hidden">Thank you for subscribing!</p>
+      </div>
+    </section>
   </main>
 
  <!-- FOOTER -->
@@ -281,27 +160,7 @@
       menuClose.classList.toggle('hidden');
     });
   </script>
-<!-- Optional JS to show thank-you message without page reload -->
-<script>
-  const form = document.getElementById('newsletterForm');
-  const msg = document.getElementById('newsletterMsg');
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const data = new FormData(form);
-    const response = await fetch(form.action, {
-      method: form.method,
-      body: data,
-      headers: { 'Accept': 'application/json' }
-    });
-    if (response.ok) {
-      form.reset();
-      msg.classList.remove('hidden');
-    } else {
-      alert('Oops! There was a problem submitting your form.');
-    }
-  });
-</script>
   <script src="js/animations.js"></script>
 </body>
 </html>
