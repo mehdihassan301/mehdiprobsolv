@@ -31,7 +31,7 @@
   <meta name="twitter:image" content="https://probsolv.online/assets/og-image.jpg" />
   
   <!-- Favicon -->
-  <link rel="icon" href="/favicon.ico" />
+  <link rel="icon" href="favicon.ico" />
 
   <!-- CSS & Scripts -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -111,25 +111,41 @@
 
   <!-- MAIN CONTENT -->
   <main class="pt-24">
-    <section class="container mx-auto px-6 lg:px-12 py-20">
-      <h1 class="text-4xl font-bold mb-4 text-center">Get in Touch</h1>
-      <p class="text-slate-300 text-center max-w-2xl mx-auto mb-12">Have a project or idea in mind? Fill out the form or connect with me on social media. You can also book a call directly!</p>
+<!-- Contact Form -->
+<form id="contactForm" class="flex flex-col gap-4 glass p-6 rounded-xl border" 
+      action="https://formspree.io/f/mpwozakj" method="POST">
+  <input type="text" name="name" placeholder="Your Name" class="p-3 rounded-md bg-white/5 border border-white/10 text-white" required />
+  <input type="email" name="email" placeholder="Email Address" class="p-3 rounded-md bg-white/5 border border-white/10 text-white" required />
+  <textarea name="message" rows="5" placeholder="Your Message" class="p-3 rounded-md bg-white/5 border border-white/10 text-white" required></textarea>
+  <button type="submit" class="btn-accent text-white font-medium rounded-md px-4 py-2 mt-2">Send Message</button>
+</form>
 
-      <div class="max-w-3xl mx-auto grid md:grid-cols-2 gap-10">
-        <!-- Contact Form -->
-        <form class="flex flex-col gap-4 glass p-6 rounded-xl border" action="https://formspree.io/f/mpwozakj" method="POST">
-          <input type="text" name="name" placeholder="Your Name" class="p-3 rounded-md bg-white/5 border border-white/10 text-white" required />
-          <input type="email" name="email" placeholder="Email Address" class="p-3 rounded-md bg-white/5 border border-white/10 text-white" required />
-          <textarea name="message" rows="5" placeholder="Your Message" class="p-3 rounded-md bg-white/5 border border-white/10 text-white" required></textarea>
-          <button type="submit" class="btn-accent text-white font-medium rounded-md px-4 py-2 mt-2">Send Message</button>
-        </form>
-    <!-- Success message -->
-    <p id="newsletterMsg" class="mt-4 text-green-400 hidden">
-       Your message has been submitted successfuly!
-    </p>
-  </div>
-</section>
+<!-- ✅ Contact Success Message -->
+<p id="contactMsg" class="mt-4 text-green-400 hidden">
+  Your message has been submitted successfully!
+</p>
 
+<!-- ✅ JS to handle the contact form -->
+<script>
+  const contactForm = document.getElementById('contactForm');
+  const contactMsg = document.getElementById('contactMsg');
+
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = new FormData(contactForm);
+    const response = await fetch(contactForm.action, {
+      method: contactForm.method,
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+    if (response.ok) {
+      contactForm.reset();
+      contactMsg.classList.remove('hidden');
+    } else {
+      alert('Oops! There was a problem submitting your form.');
+    }
+  });
+</script>
 
         <!-- Social / Book Call -->
         <div class="flex flex-col gap-6 text-center md:text-left items-center md:items-start justify-center">
