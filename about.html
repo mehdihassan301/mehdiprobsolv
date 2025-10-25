@@ -105,12 +105,12 @@
   <!-- Cursor -->
   <div class="cursor-dot" id="cursor"></div>
 
-<!-- NAV -->
+ <!-- NAV -->
 <header class="fixed w-full z-50 bg-white/90 backdrop-blur border-b border-gray-200">
   <div class="container mx-auto px-6 lg:px-12">
     <nav class="flex items-center justify-between h-16">
-      <!-- Logo + Name -->
       <a href="index.html" class="flex items-center gap-3">
+        <!-- Replace this with your logo -->
         <img 
           src="assets/logo.png" 
           alt="Mehdi Hassan Logo" 
@@ -118,8 +118,8 @@
         >
         <span class="font-semibold text-gray-800">Mehdi Hassan</span>
       </a>
-
-      <!-- Desktop Nav -->
+    </nav>
+  </div>
         <div class="hidden md:flex items-center gap-6">
           <a href="index.html" class="hover:text-primary">Home</a>
           <a href="about.html" class="hover:text-primary">About</a>
@@ -299,10 +299,33 @@
   </div>
 
   <script>
-    // Body fade-in
-    window.addEventListener("load", () => gsap.to("body", {opacity: 1, duration: 0.6}));
+    // Current Year
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Custom Cursor
+    // Testimonial Slider
+    const slider = document.getElementById('testimonial-slider');
+    let index = 0;
+    const slides = slider.children;
+    const total = slides.length;
+
+    function showNextSlide() {
+      index = (index + 1) % total;
+      slider.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    setInterval(showNextSlide, 4000); // Auto-slide every 4s
+  </script>
+</footer>
+
+
+
+  <script src="https://kit.fontawesome.com/a2e0e9b09d.js" crossorigin="anonymous"></script>
+  <script src="js/animations.js"></script>
+  <script>
+    // Body fade-in
+    window.addEventListener("load", () => gsap.to("body",{opacity:1,duration:0.6}));
+
+    // Cursor
     const cursor = document.getElementById("cursor");
     document.addEventListener("mousemove", e => {
       cursor.style.top = e.clientY + "px";
@@ -324,22 +347,16 @@
       menuClose.classList.toggle("hidden");
     });
 
-    // Scroll Animations
+    // Animations
     gsap.utils.toArray(".fade-in-up").forEach(el => {
-      gsap.fromTo(el, {opacity:0, y:40}, {
-        opacity:1, y:0, duration:1, ease:"power3.out",
-        scrollTrigger:{trigger: el, start:"top 85%"}
-      });
+      gsap.fromTo(el,{opacity:0,y:40},{opacity:1,y:0,duration:1,ease:"power3.out",scrollTrigger:{trigger:el,start:"top 85%"}});
     });
     gsap.utils.toArray(".slide-reveal").forEach(el => {
-      gsap.fromTo(el, {opacity:0, x:-60}, {
-        opacity:1, x:0, duration:1, ease:"power3.out",
-        scrollTrigger:{trigger: el, start:"top 80%"}
-      });
+      gsap.fromTo(el,{opacity:0,x:-60},{opacity:1,x:0,duration:1,ease:"power3.out",scrollTrigger:{trigger:el,start:"top 80%"}});
     });
 
-  <script src="https://kit.fontawesome.com/a2e0e9b09d.js" crossorigin="anonymous"></script>
-  <script src="js/animations.js"></script>
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
