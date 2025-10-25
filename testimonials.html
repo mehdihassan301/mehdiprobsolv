@@ -10,14 +10,37 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <style>
-    body{opacity:0;background:linear-gradient(180deg,#0f1724 0%,#0b1220 100%);color:rgba(241,245,249,0.95);} 
-    .glass{background:rgba(255,255,255,0.03);backdrop-filter:blur(6px);} 
-    .btn-accent{background:linear-gradient(90deg,#0ea5a4,#7c3aed);} 
+    :root {
+      --primary: #0ea5a4;
+      --accent: #7c3aed;
+    }
+    body {
+      opacity: 0;
+      background: linear-gradient(180deg,#0f1724 0%,#0b1220 100%);
+      color: rgba(241,245,249,0.95);
+      font-family: 'Inter', sans-serif;
+    } 
+    .glass {
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(6px);
+    } 
+    .btn-accent {
+      background: linear-gradient(90deg,var(--primary),var(--accent));
+    } 
     .carousel { display:flex; gap:2rem; }
     .carousel-track { display:flex; gap:2rem; }
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s forwards;
+    }
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body class="antialiased leading-relaxed">
+  <!-- HEADER -->
   <header class="fixed w-full z-50 glass border-b border-white/5">
     <div class="container mx-auto px-6 lg:px-12">
       <nav class="flex items-center justify-between h-16">
@@ -33,11 +56,14 @@
           <a href="contact.html" class="hover:text-primary">Contact</a>
           <a href="contact.html" class="ml-2 inline-block rounded-md text-white px-4 py-2 text-sm font-medium btn-accent">Hire me</a>
         </div>
-
         <div class="md:hidden flex items-center">
           <button id="menuBtn" aria-label="Toggle menu" class="p-2 rounded-md focus:outline-none">
-            <svg id="menuOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-            <svg id="menuClose" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            <svg id="menuOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+            <svg id="menuClose" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
           </button>
         </div>
       </nav>
@@ -55,21 +81,24 @@
     </div>
   </header>
 
+  <!-- MAIN -->
   <main class="pt-24">
-    <section class="text-center py-20 px-6 bg-gradient-to-br from-primary/8 to-accent/8 fade-in-up">
-      <h1 class="text-4xl font-bold mb-4">What Clients Say</h1>
-      <p class="max-w-2xl mx-auto text-slate-300">Real experiences from people and businesses who trusted me to bring their ideas to life through design, development, and strategy.</p>
+    <!-- Hero -->
+    <section class="text-center py-24 px-6 bg-gradient-to-br from-primary/10 to-accent/10 fade-in-up">
+      <h1 class="text-5xl font-bold mb-4">Hear From My Clients</h1>
+      <p class="max-w-2xl mx-auto text-slate-300 text-lg">Real experiences from businesses and entrepreneurs who trusted me to build fast, modern, and scalable websites.</p>
     </section>
 
+    <!-- Carousel -->
     <section class="overflow-hidden py-20">
       <div class="container mx-auto px-6 lg:px-12">
         <div id="carousel" class="carousel-track">
           <div class="carousel">
-            <!-- Cards -->
-            <div class="bg-white/5 shadow-md border rounded-xl p-6 w-80 flex-shrink-0">
-              <p class="text-slate-300 italic mb-4">“Working with Mehdi was a game-changer for our startup. The site he built loads super fast and looks stunning.”</p>
-              <div class="flex items-center gap-3">
-                <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-10 h-10 rounded-full" alt="Client" />
+            <!-- Card template -->
+            <div class="bg-white/5 shadow-lg border border-white/10 rounded-2xl p-8 w-80 flex-shrink-0 hover:scale-105 transition-transform duration-300">
+              <p class="text-slate-300 italic mb-6">“Working with Mehdi was a game-changer for our startup. The site he built loads super fast and looks stunning.”</p>
+              <div class="flex items-center gap-4">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-12 h-12 rounded-full border border-white/20" alt="Client" />
                 <div>
                   <h4 class="font-semibold text-sm">Ali Raza</h4>
                   <p class="text-xs text-slate-400">Founder, SaaSflow</p>
@@ -77,10 +106,10 @@
               </div>
             </div>
 
-            <div class="bg-white/5 shadow-md border rounded-xl p-6 w-80 flex-shrink-0">
-              <p class="text-slate-300 italic mb-4">“He completely revamped our e-commerce UX. Our sales literally jumped by 40% in the first month.”</p>
-              <div class="flex items-center gap-3">
-                <img src="https://randomuser.me/api/portraits/women/65.jpg" class="w-10 h-10 rounded-full" alt="Client" />
+            <div class="bg-white/5 shadow-lg border border-white/10 rounded-2xl p-8 w-80 flex-shrink-0 hover:scale-105 transition-transform duration-300">
+              <p class="text-slate-300 italic mb-6">“He completely revamped our e-commerce UX. Our sales literally jumped by 40% in the first month.”</p>
+              <div class="flex items-center gap-4">
+                <img src="https://randomuser.me/api/portraits/women/65.jpg" class="w-12 h-12 rounded-full border border-white/20" alt="Client" />
                 <div>
                   <h4 class="font-semibold text-sm">Sara Malik</h4>
                   <p class="text-xs text-slate-400">CMO, UrbanCart</p>
@@ -88,10 +117,10 @@
               </div>
             </div>
 
-            <div class="bg-white/5 shadow-md border rounded-xl p-6 w-80 flex-shrink-0">
-              <p class="text-slate-300 italic mb-4">“His communication and attention to detail are next level. He delivered on time and exceeded our expectations.”</p>
-              <div class="flex items-center gap-3">
-                <img src="https://randomuser.me/api/portraits/men/41.jpg" class="w-10 h-10 rounded-full" alt="Client" />
+            <div class="bg-white/5 shadow-lg border border-white/10 rounded-2xl p-8 w-80 flex-shrink-0 hover:scale-105 transition-transform duration-300">
+              <p class="text-slate-300 italic mb-6">“His communication and attention to detail are next level. He delivered on time and exceeded our expectations.”</p>
+              <div class="flex items-center gap-4">
+                <img src="https://randomuser.me/api/portraits/men/41.jpg" class="w-12 h-12 rounded-full border border-white/20" alt="Client" />
                 <div>
                   <h4 class="font-semibold text-sm">Hassan Javed</h4>
                   <p class="text-xs text-slate-400">CEO, LocalBiz</p>
@@ -99,10 +128,10 @@
               </div>
             </div>
 
-            <div class="bg-white/5 shadow-md border rounded-xl p-6 w-80 flex-shrink-0">
-              <p class="text-slate-300 italic mb-4">“Loved how he transformed our corporate site. Clean, modern, and optimized for SEO — exactly what we wanted.”</p>
-              <div class="flex items-center gap-3">
-                <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-10 h-10 rounded-full" alt="Client" />
+            <div class="bg-white/5 shadow-lg border border-white/10 rounded-2xl p-8 w-80 flex-shrink-0 hover:scale-105 transition-transform duration-300">
+              <p class="text-slate-300 italic mb-6">“Loved how he transformed our corporate site. Clean, modern, and optimized for SEO — exactly what we wanted.”</p>
+              <div class="flex items-center gap-4">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-12 h-12 rounded-full border border-white/20" alt="Client" />
                 <div>
                   <h4 class="font-semibold text-sm">Maria Khan</h4>
                   <p class="text-xs text-slate-400">Marketing Director, DesignPro</p>
@@ -110,25 +139,14 @@
               </div>
             </div>
 
-            <!-- duplicate for seamless scroll -->
-            <div class="bg-white/5 shadow-md border rounded-xl p-6 w-80 flex-shrink-0">
-              <p class="text-slate-300 italic mb-4">“Working with Mehdi was a game-changer for our startup. The site he built loads super fast and looks stunning.”</p>
-              <div class="flex items-center gap-3">
-                <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-10 h-10 rounded-full" alt="Client" />
+            <!-- Duplicates for seamless loop -->
+            <div class="bg-white/5 shadow-lg border border-white/10 rounded-2xl p-8 w-80 flex-shrink-0 hover:scale-105 transition-transform duration-300">
+              <p class="text-slate-300 italic mb-6">“Working with Mehdi was a game-changer for our startup. The site he built loads super fast and looks stunning.”</p>
+              <div class="flex items-center gap-4">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-12 h-12 rounded-full border border-white/20" alt="Client" />
                 <div>
                   <h4 class="font-semibold text-sm">Ali Raza</h4>
                   <p class="text-xs text-slate-400">Founder, SaaSflow</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="bg-white/5 shadow-md border rounded-xl p-6 w-80 flex-shrink-0">
-              <p class="text-slate-300 italic mb-4">“He completely revamped our e-commerce UX. Our sales literally jumped by 40% in the first month.”</p>
-              <div class="flex items-center gap-3">
-                <img src="https://randomuser.me/api/portraits/women/65.jpg" class="w-10 h-10 rounded-full" alt="Client" />
-                <div>
-                  <h4 class="font-semibold text-sm">Sara Malik</h4>
-                  <p class="text-xs text-slate-400">CMO, UrbanCart</p>
                 </div>
               </div>
             </div>
@@ -138,11 +156,12 @@
       </div>
     </section>
 
+    <!-- CTA -->
     <section class="bg-gradient-to-br from-primary to-accent text-white py-20 fade-in-up">
       <div class="container mx-auto px-6 lg:px-12 text-center">
-        <h2 class="text-3xl font-bold mb-4">Your Project Could Be Next</h2>
+        <h2 class="text-4xl font-bold mb-4">Your Project Could Be Next</h2>
         <p class="max-w-2xl mx-auto mb-8 text-white/90">Let’s build something amazing together. Whether you’re launching a startup or refreshing your online presence — I’ve got you covered.</p>
-        <a href="contact.html" class="inline-block bg-white text-primary font-medium px-6 py-3 rounded-md">Let's Talk</a>
+        <a href="contact.html" class="inline-block bg-white text-primary font-medium px-6 py-3 rounded-md hover:scale-105 transition-transform duration-300">Let's Talk</a>
       </div>
     </section>
   </main>
@@ -170,21 +189,13 @@
       </div>
       <div>
         <h4 class="font-semibold mb-3 text-white">Connect</h4>
-        <ul class="space-y-2 text-white/70 text-sm">
-          <a href="https://www.facebook.com/profile.php?id=61567271347491" target="_blank" aria-label="Facebook" class="hover:text-primary transition"><i class="fab fa-facebook"></i></a>
-          <a href="https://www.instagram.com/_mehdihassann" target="_blank" aria-label="Instagram" class="hover:text-primary transition"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn" class="hover:text-primary transition"><i class="fab fa-linkedin"></i></a>
-          <a href="https://www.tiktok.com/" target="_blank" aria-label="TikTok" class="hover:text-primary transition"><i class="fab fa-tiktok"></i></a>
-      </div>
-      <div>
-        <h4 class="font-semibold mb-3 text-white">Connect</h4>
         <div class="flex gap-5 text-white/70 text-lg">
           <a href="https://www.facebook.com/profile.php?id=61567271347491" target="_blank" aria-label="Facebook" class="hover:text-primary transition"><i class="fab fa-facebook"></i></a>
           <a href="https://www.instagram.com/_mehdihassann" target="_blank" aria-label="Instagram" class="hover:text-primary transition"><i class="fab fa-instagram"></i></a>
           <a href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn" class="hover:text-primary transition"><i class="fab fa-linkedin"></i></a>
           <a href="https://www.tiktok.com/" target="_blank" aria-label="TikTok" class="hover:text-primary transition"><i class="fab fa-tiktok"></i></a>
         </div>
-        <p class="mt-4 text-white/50 text-sm">📩mehdi@probsolv.online</p>
+        <p class="mt-4 text-white/50 text-sm">📩 mehdi@probsolv.online</p>
       </div>
     </div>
     <div class="border-t border-white/5 py-5 text-center text-white/50 text-sm relative">
@@ -194,6 +205,8 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // mobile menu toggle
     const menuBtn = document.getElementById('menuBtn');
     const mobilePanel = document.getElementById('mobilePanel');
     const menuOpen = document.getElementById('menuOpen');
@@ -204,26 +217,17 @@
       menuClose.classList.toggle('hidden');
     });
 
-    // simple horizontal auto-scroll for carousel using GSAP
+    // horizontal auto-scroll carousel
     function initCarousel() {
       const track = document.querySelector('#carousel .carousel');
       if (!track || typeof gsap === 'undefined') return;
-      const width = track.scrollWidth / 2; // because we duplicated
-      gsap.to(track, {
-        x: -width,
-        ease: 'none',
-        duration: 30,
-        repeat: -1
-      });
-
-      // pause on hover
+      const width = track.scrollWidth / 2;
+      gsap.to(track, { x: -width, ease: 'none', duration: 30, repeat: -1 });
       track.addEventListener('mouseenter', () => gsap.to(track, { timeScale: 0 }));
       track.addEventListener('mouseleave', () => gsap.to(track, { timeScale: 1 }));
     }
-
     window.addEventListener('load', initCarousel);
   </script>
-
-  <script src="js/animations.js"></script>
 </body>
 </html>
+
