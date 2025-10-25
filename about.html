@@ -256,16 +256,7 @@
 
     window.addEventListener('load', initCarousel);
   </script>
-    // Animations
-    gsap.utils.toArray(".fade-in-up").forEach(el => {
-      gsap.fromTo(el,{opacity:0,y:40},{opacity:1,y:0,duration:1,ease:"power3.out",scrollTrigger:{trigger:el,start:"top 85%"}});
-    });
-    gsap.utils.toArray(".slide-reveal").forEach(el => {
-      gsap.fromTo(el,{opacity:0,x:-60},{opacity:1,x:0,duration:1,ease:"power3.out",scrollTrigger:{trigger:el,start:"top 80%"}});
-    });
-
-    // Year
-    document.getElementById("year").textContent = new Date().getFullYear();
+    
   </script>
 </body>
 </html>
