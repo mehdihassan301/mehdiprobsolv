@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Block unnecessary system files (for cleaner indexing)
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /admin/
+Disallow: /private/
+
+# Sitemap location for all search engines
+Sitemap: https://www.probsolv.online/sitemap.xml
