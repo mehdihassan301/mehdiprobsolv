@@ -127,10 +127,9 @@
       <div>
         <h4 class="font-semibold mb-3">Connect</h4>
         <div class="flex gap-5 text-lg mb-3">
-          <a href="#" class="hover:text-primary"><i class="fab fa-facebook"></i></a>
-          <a href="#" class="hover:text-primary"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="hover:text-primary"><i class="fab fa-linkedin"></i></a>
-          <a href="#" class="hover:text-primary"><i class="fab fa-tiktok"></i></a>
+          <a href="https://facebook.com/mehdi.hassan.607411/" class="hover:text-primary"><i class="fab fa-facebook"></i></a>
+          <a href="https://instagram.com/_mehdihassann/" class="hover:text-primary"><i class="fab fa-instagram"></i></a>
+          <a href="https://linkedin.com/in/mehdi-hassan-72924a377" target="_blank" class="social-icon"><i class="fab fa-linkedin" class="hover:text-primary"><i class="fab fa-linkedin"></i></a>
         </div>
         <p class="text-gray-500 text-sm">📩 mehdi@probsolv.online</p>
       </div>
@@ -157,6 +156,22 @@
       mobilePanel.classList.toggle('hidden');
       menuOpen.classList.toggle('hidden');
       menuClose.classList.toggle('hidden');
+    });
+
+     // Newsletter Form
+    const form = document.getElementById("newsletterForm");
+    const msg = document.getElementById("newsletterMsg");
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      const email = form.email.value;
+      // Simple fetch to Formspree endpoint (replace YOUR_FORM_ID)
+      fetch("https://formspree.io/f/mpwozakj", {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      }).then(res => {
+        if(res.ok) { msg.classList.remove("hidden"); form.reset(); }
+      }).catch(err => console.error(err));
     });
   </script>
 
