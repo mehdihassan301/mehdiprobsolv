@@ -90,11 +90,6 @@
     ]
   }
   </script>
-  
-  <!-- Tailwind & GSAP -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <script>
     tailwind.config = {
@@ -115,7 +110,7 @@
       overflow-x: hidden;
     }
 
-    /* Custom Cursor */
+     /* Desktop-only custom cursor: hidden by default;  enable only on devices with pointer: fine */
     .cursor-dot {
       position: fixed;
       top: 0;
@@ -129,6 +124,8 @@
       z-index: 9999;
       mix-blend-mode: difference;
       transition: transform 0.15s ease-out, width 0.2s, height 0.2s;
+      will-change: transform;
+      display: none; /* shown by JS when appropriate */
     }
     .cursor-hover {
       width: 40px;
@@ -175,22 +172,22 @@
     /* Fade + slide */
     .fade-in-up { opacity: 0; transform: translateY(30px); }
     .slide-reveal { opacity: 0; transform: translateX(-60px); }
-    /* Make all card images responsive and perfectly fitted */
-.card-hover img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9; /* keeps consistent proportions */
-  object-fit: cover;
-  display: block;
-  border-radius: 0.5rem; /* same as Tailwind’s rounded-lg */
-}
+    
+    /* Make all card images responsive and perfectly fitted*/
+/* Card image container ensures aspect ratio and prevents layout shift */
+    .card-img-wrap {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      display: block;
+      overflow: hidden;
+      border-radius: 0.5rem;
+      background-color: #f8fafc;
+    }
 
-/* For smaller screens – maintain proper proportions */
-@media (max-width: 640px) {
-  .card-hover img {
-    aspect-ratio: 4 / 3;
-  }
-}
+    /* For smaller screens – maintain proper proportions */
+    @media (max-width: 640px) {
+      .card-img-wrap { aspect-ratio: 4 / 3; }
+    }
 
 
     /* Light theme tweaks */
@@ -202,8 +199,8 @@
 
 <body class="antialiased leading-relaxed">
 
-  <!-- Cursor -->
-  <div class="cursor-dot" id="cursor"></div>
+  <!-- Cursor (desktop-only). Visible only when JS enables it for pointer: fine devices -->
+  <div class="cursor-dot" id="cursor" aria-hidden="true"></div>
 
   <!-- NAV -->
   <header class="fixed w-full z-50 bg-white/90 backdrop-blur border-b border-gray-200">
@@ -410,6 +407,11 @@
 </footer>
 <script src="https://kit.fontawesome.com/a2e0e9b09d.js" crossorigin="anonymous"></script>
 
+  
+  <!-- Tailwind & GSAP -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script>
     // Body fade-in
     window.addEventListener("load", () => gsap.to("body", {opacity: 1, duration: 0.6}));
@@ -495,60 +497,48 @@ gsap.utils.toArray(".counter").forEach(counter => {
     // Year
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
-     <!-- ProbSolv Chatbase Floating Chat -->
-<style>
-  #probsolvChat {
-    position: fixed;
-    bottom: 80px;
-    right: 20px;
-    width: 350px;
-    height: 500px;
-    border: none;
-    border-radius: 16px;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
-    z-index: 9999;
-    display: none;
-  }
-
-  #chatToggleBtn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #0ea5e9; /* Tailwind sky-blue-500 */
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 56px;
-    height: 56px;
-    font-size: 22px;
-    cursor: pointer;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-    z-index: 10000;
-  }
-
-  /* Responsive for mobile */
-  @media (max-width: 600px) {
+<!-- ProbSolv Chat base markup -->
+  <style>
     #probsolvChat {
-      width: 90%;
-      height: 70%;
-      right: 5%;
-      bottom: 90px;
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      width: 350px;
+      height: 500px;
+      border: none;
+      border-radius: 16px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+      z-index: 9999;
+      display: none;
     }
-  }
-</style>
+    #chatToggleBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #0ea5e9;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+      z-index: 10000;
+    }
+    @media (max-width: 600px) {
+      #probsolvChat {
+        width: 90%;
+        height: 70%;
+        right: 5%;
+        bottom: 90px;
+      }
+    }
+  </style>
 
-<button id="chatToggleBtn" onclick="toggleChat()">💬</button>
+  <button id="chatToggleBtn" onclick="/* handler bound in script */">💬</button>
+  <iframe id="probsolvChat" data-src="https://www.chatbase.co/chatbot-iframe/GVaaAGsGbpo1R0HZYly_h" title="ProbSolv chat" aria-hidden="true"></iframe>
 
-<iframe
-  id="probsolvChat"
-  src="https://www.chatbase.co/chatbot-iframe/GVaaAGsGbpo1R0HZYly_h"
-></iframe>
-
-<script>
-  function toggleChat() {
-    const chat = document.getElementById("probsolvChat");
-    chat.style.display = chat.style.display === "none" ? "block" : "none";
-  }
 </script>
 
 </body>
