@@ -90,6 +90,11 @@
     ]
   }
   </script>
+  
+  <!-- Tailwind & GSAP -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <script>
     tailwind.config = {
@@ -197,8 +202,8 @@
 
 <body class="antialiased leading-relaxed">
 
-  <!-- Cursor (desktop-only). Visible only when JS enables it for pointer: fine devices -->
-  <div class="cursor-dot" id="cursor" aria-hidden="true"></div>
+  <!-- Cursor -->
+  <div class="cursor-dot" id="cursor"></div>
 
   <!-- NAV -->
   <header class="fixed w-full z-50 bg-white/90 backdrop-blur border-b border-gray-200">
@@ -403,215 +408,148 @@
     © <span id="year"></span> Mehdi Hassan. All rights reserved.
   </div>
 </footer>
-
-
-  <!-- GSAP (deferred to avoid blocking) -->
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://kit.fontawesome.com/a2e0e9b09d.js" crossorigin="anonymous"></script>
 
   <script>
-    // Show body with fade-in after critical resources are ready.
-    window.addEventListener("load", () => {
-      if (typeof gsap !== "undefined") {
-        gsap.to("body", { opacity: 1, duration: 0.6 });
-      } else {
-        // fallback if GSAP hasn't loaded yet
-        document.body.style.opacity = 1;
-      }
-      document.getElementById("year").textContent = new Date().getFullYear();
+    // Body fade-in
+    window.addEventListener("load", () => gsap.to("body", {opacity: 1, duration: 0.6}));
+
+    // Custom Cursor
+    const cursor = document.getElementById("cursor");
+    document.addEventListener("mousemove", e => {
+      cursor.style.top = e.clientY + "px";
+      cursor.style.left = e.clientX + "px";
+    });
+    document.querySelectorAll("a, button, .card-hover, .img-tilt").forEach(el => {
+      el.addEventListener("mouseenter", () => cursor.classList.add("cursor-hover"));
+      el.addEventListener("mouseleave", () => cursor.classList.remove("cursor-hover"));
     });
 
-    // DESKTOP-ONLY custom cursor: enable only if pointer is "fine" (usually desktops with mouse)
-    (function() {
-      const supportsFinePointer = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
-      if (!supportsFinePointer) return; // exit on touch devices (keeps default touch behavior)
+    // Mobile Menu
+    const menuBtn = document.getElementById("menuBtn");
+    const mobilePanel = document.getElementById("mobilePanel");
+    const menuOpen = document.getElementById("menuOpen");
+    const menuClose = document.getElementById("menuClose");
+    menuBtn.addEventListener("click", () => {
+      mobilePanel.classList.toggle("hidden");
+      menuOpen.classList.toggle("hidden");
+      menuClose.classList.toggle("hidden");
+    });
 
-      const cursor = document.getElementById("cursor");
-      if (!cursor) return;
-      cursor.style.display = "block"; // enable cursor for desktop
-
-      // Use requestAnimationFrame for high-performance updates (throttled)
-      let mouseX = 0, mouseY = 0, rafPending = false;
-      document.addEventListener("mousemove", (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        if (!rafPending) {
-          rafPending = true;
-          window.requestAnimationFrame(() => {
-            cursor.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
-            rafPending = false;
-          });
-        }
-      }, { passive: true });
-
-      // hover states for interactive elements
-      document.querySelectorAll("a, button, .card-hover, .img-tilt").forEach(el => {
-        el.addEventListener("mouseenter", () => cursor.classList.add("cursor-hover"));
-        el.addEventListener("mouseleave", () => cursor.classList.remove("cursor-hover"));
+    // Scroll Animations
+    gsap.utils.toArray(".fade-in-up").forEach(el => {
+      gsap.fromTo(el, {opacity:0, y:40}, {
+        opacity:1, y:0, duration:1, ease:"power3.out",
+        scrollTrigger:{trigger: el, start:"top 85%"}
       });
-    })();
+    });
+    gsap.utils.toArray(".slide-reveal").forEach(el => {
+      gsap.fromTo(el, {opacity:0, x:-60}, {
+        opacity:1, x:0, duration:1, ease:"power3.out",
+        scrollTrigger:{trigger: el, start:"top 80%"}
+      });
+    });
+// Counter Animation
+gsap.utils.toArray(".counter").forEach(counter => {
+  let target = +counter.dataset.target;
+  let started = false;
 
-    // Mobile menu toggle (unchanged)
-    (function() {
-      const menuBtn = document.getElementById("menuBtn");
-      const mobilePanel = document.getElementById("mobilePanel");
-      const menuOpen = document.getElementById("menuOpen");
-      const menuClose = document.getElementById("menuClose");
-      if (menuBtn) {
-        menuBtn.addEventListener("click", () => {
-          mobilePanel.classList.toggle("hidden");
-          if (menuOpen) menuOpen.classList.toggle("hidden");
-          if (menuClose) menuClose.classList.toggle("hidden");
-        });
-      }
-    })();
-
-    // GSAP scroll animations (initialization deferred until GSAP available)
-    (function initGSAP() {
-      function registerAnimations() {
-        if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") {
-          return;
-        }
-
-        gsap.utils.toArray(".fade-in-up").forEach(el => {
-          gsap.fromTo(el, { opacity: 0, y: 40 }, {
-            opacity: 1, y: 0, duration: 1, ease: "power3.out",
-            scrollTrigger: { trigger: el, start: "top 85%" }
-          });
-        });
-
-        gsap.utils.toArray(".slide-reveal").forEach(el => {
-          gsap.fromTo(el, { opacity: 0, x: -60 }, {
-            opacity: 1, x: 0, duration: 1, ease: "power3.out",
-            scrollTrigger: { trigger: el, start: "top 80%" }
-          });
-        });
-
-        // Counter animation
-        gsap.utils.toArray(".counter").forEach(counter => {
-          let target = +counter.dataset.target;
-          let started = false;
-          ScrollTrigger.create({
-            trigger: counter,
-            start: "top 85%",
-            onEnter: () => {
-              if (!started) {
-                started = true;
-                gsap.fromTo(counter, { textContent: 0 }, {
-                  textContent: target,
-                  duration: 2,
-                  ease: "power1.out",
-                  snap: { textContent: 1 },
-                  onUpdate: function() {
-                    counter.textContent = Math.floor(counter.textContent);
-                  }
-                });
-              }
+  ScrollTrigger.create({
+    trigger: counter,
+    start: "top 85%",
+    onEnter: () => {
+      if (!started) {
+        started = true;
+        gsap.fromTo(counter, 
+          { textContent: 0 }, 
+          {
+            textContent: target,
+            duration: 2,
+            ease: "power1.out",
+            snap: { textContent: 1 },
+            onUpdate: function () {
+              counter.textContent = Math.floor(counter.textContent);
             }
-          });
-        });
-
-      }
-
-      // Try to initialize after load; if GSAP loads later, poll a few times
-      window.addEventListener("load", () => {
-        let tries = 0;
-        const waitForGSAP = setInterval(() => {
-          tries++;
-          if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
-            clearInterval(waitForGSAP);
-            try { ScrollTrigger.refresh(); } catch(e) {}
-            registerAnimations();
-          } else if (tries > 20) {
-            clearInterval(waitForGSAP);
-            // give up gracefully; page still works
           }
-        }, 150);
-      });
-    })();
-
-    // Newsletter form (keeps your fetch-based submission)
-    (function() {
-      const form = document.getElementById("newsletterForm");
-      const msg = document.getElementById("newsletterMsg");
-      if (!form) return;
-      form.addEventListener("submit", e => {
-        e.preventDefault();
-        const email = form.email.value;
-        fetch("https://formspree.io/f/mpwozakj", {
-          method: "POST",
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email })
-        }).then(res => {
-          if (res.ok) { if (msg) msg.classList.remove("hidden"); form.reset(); }
-        }).catch(err => console.error(err));
-      });
-    })();
-
-    // Chat iframe: lazy load only on click (prevents iframe network on initial load)
-    (function() {
-      const chatBtn = document.getElementById("chatToggleBtn");
-      const chatIframe = document.getElementById("probsolvChat");
-      if (!chatBtn || !chatIframe) return;
-
-      // Remove initial src to prevent loading until needed. (In case file already had src, this will override.)
-      const chatSrc = chatIframe.getAttribute("data-src") || chatIframe.getAttribute("src") || "https://www.chatbase.co/chatbot-iframe/GVaaAGsGbpo1R0HZYly_h";
-      chatIframe.removeAttribute("src");
-      chatIframe.style.display = "none";
-
-      chatBtn.addEventListener("click", () => {
-        if (!chatIframe.getAttribute("src")) {
-          chatIframe.setAttribute("src", chatSrc);
-        }
-        chatIframe.style.display = chatIframe.style.display === "none" ? "block" : "none";
-      });
-    })();
-
-  </script>
-
-  <!-- ProbSolv Chat base markup -->
-  <style>
-    #probsolvChat {
-      position: fixed;
-      bottom: 80px;
-      right: 20px;
-      width: 350px;
-      height: 500px;
-      border: none;
-      border-radius: 16px;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
-      z-index: 9999;
-      display: none;
-    }
-    #chatToggleBtn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #0ea5e9;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 56px;
-      height: 56px;
-      font-size: 22px;
-      cursor: pointer;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-      z-index: 10000;
-    }
-    @media (max-width: 600px) {
-      #probsolvChat {
-        width: 90%;
-        height: 70%;
-        right: 5%;
-        bottom: 90px;
+        );
       }
     }
-  </style>
+  });
+});
+// Newsletter Form
+    const form = document.getElementById("newsletterForm");
+    const msg = document.getElementById("newsletterMsg");
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      const email = form.email.value;
+      // Simple fetch to Formspree endpoint (replace YOUR_FORM_ID)
+      fetch("https://formspree.io/f/mpwozakj", {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      }).then(res => {
+        if(res.ok) { msg.classList.remove("hidden"); form.reset(); }
+      }).catch(err => console.error(err));
+    });
+ 
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+     <!-- ProbSolv Chatbase Floating Chat -->
+<style>
+  #probsolvChat {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 350px;
+    height: 500px;
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+    z-index: 9999;
+    display: none;
+  }
 
-  <button id="chatToggleBtn" onclick="/* handler bound in script */">💬</button>
-  <iframe id="probsolvChat" data-src="https://www.chatbase.co/chatbot-iframe/GVaaAGsGbpo1R0HZYly_h" title="ProbSolv chat" aria-hidden="true"></iframe>
+  #chatToggleBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #0ea5e9; /* Tailwind sky-blue-500 */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    z-index: 10000;
+  }
+
+  /* Responsive for mobile */
+  @media (max-width: 600px) {
+    #probsolvChat {
+      width: 90%;
+      height: 70%;
+      right: 5%;
+      bottom: 90px;
+    }
+  }
+</style>
+
+<button id="chatToggleBtn" onclick="toggleChat()">💬</button>
+
+<iframe
+  id="probsolvChat"
+  src="https://www.chatbase.co/chatbot-iframe/GVaaAGsGbpo1R0HZYly_h"
+></iframe>
+
+<script>
+  function toggleChat() {
+    const chat = document.getElementById("probsolvChat");
+    chat.style.display = chat.style.display === "none" ? "block" : "none";
+  }
+</script>
 
 </body>
 </html>
-
-
