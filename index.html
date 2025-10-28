@@ -416,17 +416,35 @@
     // Body fade-in
     window.addEventListener("load", () => gsap.to("body", {opacity: 1, duration: 0.6}));
 
-    // Custom Cursor
-    const cursor = document.getElementById("cursor");
-    document.addEventListener("mousemove", e => {
-      cursor.style.top = e.clientY + "px";
-      cursor.style.left = e.clientX + "px";
-    });
-    document.querySelectorAll("a, button, .card-hover, .img-tilt").forEach(el => {
-      el.addEventListener("mouseenter", () => cursor.classList.add("cursor-hover"));
-      el.addEventListener("mouseleave", () => cursor.classList.remove("cursor-hover"));
-    });
+     // DESKTOP-ONLY custom cursor: enable only if pointer is "fine" (usually desktops with mouse)
+    (function() {
+      const supportsFinePointer = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
+      if (!supportsFinePointer) return; // exit on touch devices (keeps default touch behavior)
 
+      const cursor = document.getElementById("cursor");
+      if (!cursor) return;
+      cursor.style.display = "block"; // enable cursor for desktop
+
+      // Use requestAnimationFrame for high-performance updates (throttled)
+      let mouseX = 0, mouseY = 0, rafPending = false;
+      document.addEventListener("mousemove", (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        if (!rafPending) {
+          rafPending = true;
+          window.requestAnimationFrame(() => {
+            cursor.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+            rafPending = false;
+          });
+        }
+      }, { passive: true });
+
+      // hover states for interactive elements
+      document.querySelectorAll("a, button, .card-hover, .img-tilt").forEach(el => {
+        el.addEventListener("mouseenter", () => cursor.classList.add("cursor-hover"));
+        el.addEventListener("mouseleave", () => cursor.classList.remove("cursor-hover"));
+      });
+    })();
     // Mobile Menu
     const menuBtn = document.getElementById("menuBtn");
     const mobilePanel = document.getElementById("mobilePanel");
