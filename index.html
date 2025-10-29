@@ -511,6 +511,11 @@ gsap.utils.toArray(".counter").forEach(counter => {
         if(res.ok) { msg.classList.remove("hidden"); form.reset(); }
       }).catch(err => console.error(err));
     });
+
+    
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
  <!-- ProbSolv Chat base markup -->
   <style>
     #probsolvChat {
@@ -554,11 +559,6 @@ gsap.utils.toArray(".counter").forEach(counter => {
   <iframe id="probsolvChat" data-src="https://www.chatbase.co/chatbot-iframe/GVaaAGsGbpo1R0HZYly_h" title="ProbSolv chat" aria-hidden="true"></iframe>
 
 </script>
-    
-    // Year
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
-
 
 </body>
 </html>
