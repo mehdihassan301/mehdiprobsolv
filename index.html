@@ -252,6 +252,7 @@
   </header>
 
   <main class="pt-24">
+    <link rel="preload" as="image" href="mehdi.webp" />
   <!-- HERO -->
     <section class="container mx-auto px-6 lg:px-12 py-20">
       <div class="grid lg:grid-cols-2 gap-10 items-center">
@@ -417,9 +418,9 @@
 
   
   <!-- Tailwind & GSAP -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="https://kit.fontawesome.com/a2e0e9b09d.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script>
     // Body fade-in
     window.addEventListener("load", () => gsap.to("body", {opacity: 1, duration: 0.6}));
@@ -505,20 +506,31 @@ gsap.utils.toArray(".counter").forEach(counter => {
   });
 });
 // Newsletter Form
-    const form = document.getElementById("newsletterForm");
-    const msg = document.getElementById("newsletterMsg");
-    form.addEventListener("submit", e => {
-      e.preventDefault();
-      const email = form.email.value;
-      // Simple fetch to Formspree endpoint (replace YOUR_FORM_ID)
-      fetch("https://formspree.io/f/mpwozakj", {
+const form = document.querySelector("form[action*='formspree']");
+if (form) {
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = form.email.value.trim();
+    if (!email) return alert("Please enter a valid email.");
+    
+    try {
+      const res = await fetch("https://formspree.io/f/mpwozakj", {
         method: "POST",
-        headers: { 'Content-Type': 'application/json' },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email })
-      }).then(res => {
-        if(res.ok) { msg.classList.remove("hidden"); form.reset(); }
-      }).catch(err => console.error(err));
-    });
+      });
+      
+      if (res.ok) {
+        alert("✅ Thanks for subscribing!");
+        form.reset();
+      } else {
+        alert("⚠️ Something went wrong. Please try again later.");
+      }
+    } catch (err) {
+      alert("❌ Network error. Check your connection.");
+    }
+  });
+}
 
     
     // Year
