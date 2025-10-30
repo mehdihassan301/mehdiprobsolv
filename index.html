@@ -561,7 +561,16 @@ gsap.utils.toArray(".counter").forEach(counter => {
     box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4);
   }
 
-
+  /* Responsive for mobile */
+  @media (max-width: 600px) {
+    #probsolvChat {
+      width: 90%;
+      height: 70%;
+      right: 5%;
+      bottom: 90px;
+    }
+  }
+</style>
 
 <!-- 💬 Floating Chat Button -->
 <button id="chatToggleBtn" aria-label="Chat with ProbSolv AI" onclick="toggleChat()">💬</button>
@@ -580,7 +589,20 @@ gsap.utils.toArray(".counter").forEach(counter => {
     const chat = document.getElementById("probsolvChat");
     chat.style.display = chat.style.display === "none" ? "block" : "none";
   }
+  function toggleChat() {
+  const chat = document.getElementById("probsolvChat");
+  if (chat.style.display === "none" || chat.style.display === "") {
+    chat.style.display = "block";
+    chat.style.opacity = 0;
+    setTimeout(() => chat.style.opacity = 1, 50);
+  } else {
+    chat.style.opacity = 0;
+    setTimeout(() => chat.style.display = "none", 300);
+  }
+}
+
 </script>
+
 
 
 </body>
